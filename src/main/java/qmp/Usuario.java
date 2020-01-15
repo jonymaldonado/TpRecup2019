@@ -12,14 +12,18 @@ public class Usuario {
 	private String password;
 	private int edad;
 	private List<Guardarropa> guardarropas;
+	private String correo;
+	private String celular;
 	
 	//constructor
-	public Usuario(String nombre, String nombreDeUsuario, String password, int edad) {
+	public Usuario(String nombre, String nombreDeUsuario, String password, int edad, String correo, String celular) {
 
 		this.nombre = nombre;
 		this.nombreDeUsuario = nombreDeUsuario;
 		this.password = password;
 		this.edad = edad;
+		this.correo = correo;
+		this.celular = celular;
 		this.guardarropas = new ArrayList<Guardarropa>();
 	}
 	
@@ -57,6 +61,22 @@ public class Usuario {
 		this.edad = edad;
 	}
 	
+	public String getCorreo() {
+		return this.correo;
+	}
+	
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getCelular() {
+		return this.celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
 	
 	//metodos
 	
