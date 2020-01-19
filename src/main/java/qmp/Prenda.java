@@ -4,9 +4,9 @@ public class Prenda {
 	
 	private String nombre;
 	private Categoria categoria;
-	private Color color;
+	private String color;
 //constructor
-	public Prenda(String nombre, Categoria categoria, qmp.Color color) {
+	public Prenda(String nombre, Categoria categoria, String color) {
 		this.nombre = nombre;
 		this.categoria = categoria;
 		this.color = color;
@@ -26,10 +26,10 @@ public class Prenda {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
-	public void setColor(Color color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 //metodos

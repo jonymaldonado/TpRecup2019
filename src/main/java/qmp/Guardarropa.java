@@ -9,15 +9,43 @@ public class Guardarropa {
 	private List<Prenda> prendas;
 //	private Algoritmo algoritmo;
 //	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
-	private Usuario usuarioPerteneciente;
+//	private Usuario usuarioPerteneciente;
 
 //constructor
 
-	private Guardarropa(Usuario usuario) {
+	public Guardarropa(String nombre) {
 		 this.prendas = new ArrayList<Prenda>();
-		 this.usuarioPerteneciente=null;
+//		 this.usuarioPerteneciente=null;
+		 this.setNombre(nombre);
 		 }
+//metodos getters y setters
+	
 
+	public String getNombre() {
+	return nombre;
+
+	} 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+/*	public Usuario getUsuarioPerteneciente() {
+		return usuarioPerteneciente;
+	}	
+	public void setUsuarioPerteneciente(Usuario usuarioPerteneciente) {
+		this.usuarioPerteneciente = usuarioPerteneciente;
+	}
+*/
+	
+	public List<Prenda> getPrendas() {
+		return prendas;
+	}
+	
+//metodos 
+	
+	public void agregarPrenda(Prenda unaPrenda) {
+		this.prendas.add(unaPrenda);
+	}
 	
 	
 	

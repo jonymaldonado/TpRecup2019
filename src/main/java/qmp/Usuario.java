@@ -1,33 +1,48 @@
 package qmp;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import pojo.Guardarropa;
 
-public class Usuario {
-	//atributos
+public class Usuario{
+	//atributos --------------------------------------------------------------------------------
 	private String nombre;
+	private String apellido;
 	private String nombreDeUsuario;
 	private String password;
 	private int edad;
-	private List<Guardarropa> guardarropas;
+	private Guardarropa guardarropas;
 	private String correo;
 	private String celular;
 	
-	//constructor
-	public Usuario(String nombre, String nombreDeUsuario, String password, int edad, String correo, String celular) {
+	//constructor ---------------------------------------------------------------------------
+	public Usuario(String nombre, String apellido, String nombreDeUsuario, String password, int edad, String correo, String celular) {
 
-		this.nombre = nombre;
-		this.nombreDeUsuario = nombreDeUsuario;
-		this.password = password;
-		this.edad = edad;
-		this.correo = correo;
-		this.celular = celular;
-		this.guardarropas = new ArrayList<Guardarropa>();
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+		this.setNombreDeUsuario(nombreDeUsuario);
+		this.setPassword(password);
+		this.setEdad(edad);
+		this.setCorreo(correo);
+		this.setCelular(celular);
+		this.setGuardarropas(null);
 	}
 	
-	//metodos - Getters y setters
+	//metodos - Getters y setters ---------------------------------------------------------------
+	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
+	public String getApellido() {
+		return apellido;
+	}
+	
+	public Guardarropa getGuardarropas() {
+		return guardarropas;
+	}
+	
+	public void setGuardarropas(Guardarropa guardarropas) {
+		this.guardarropas = guardarropas;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -78,14 +93,28 @@ public class Usuario {
 		this.celular = celular;
 	}
 	
-	//metodos
+	//metodos --------------------------------------------------------------------------------------------
 	
 	public void crearGuardarropa(String nombre) {
-		Guardarropa g = new Guardarropa(nombre);
-		this.guardarropas.add(g);
-		}
-	
-	
-	
+		Guardarropa guardarropaNueva = new Guardarropa(nombre);
+		 {
+			if (this.existenciaDeGuardarropa()) {
+				System.out.println("Ya tienes un Guardarropa");
+			} else {
+				this.setGuardarropas(guardarropaNueva);
+			}
 
-}
+		}
+		
+	}
+	
+	public boolean existenciaDeGuardarropa() {
+		boolean existeUnGuardarropa=false;
+		
+		if (this.getGuardarropas()!=null) {
+			existeUnGuardarropa=true;
+		}
+		return existeUnGuardarropa;
+	}
+
+}//fin Usuario ------------------------------------------------------------------------------------------
