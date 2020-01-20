@@ -1,4 +1,4 @@
-package algoritmoAleatorio;
+package qmp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +15,18 @@ import pojo.Atuendo;
 
 public class Algoritmo {
 	
-	public apiDelClima api1 = new OpenWeatherMap();
-	public algoritmoTemperatura unAlgoritmo = new algoritmoTemperatura(api1);
-    //public apiDelClima otraApiDelClima = new AccuWeather();
-    //public algoritmoTemperatura otroAlgoritmo = new algoritmoTemperatura(otraApiDelClima);
+//ATRIBUTOS---------------------------------------
 	public int cantidadDeAtuendosPosible;
-   
+//CONSTRUCTOR -------------------------------------------
 	public Algoritmo () {
 		
 	}
-
+//METODOS - GETTERS Y SETTERS -------------------------
+	
+	
+	
+	
+//METODOS -------------------------------------------------
 	public Atuendo originarAtuendoCon(Guardarropa guardarropa) {
 		//Agrego las prendas a las distintas listas de prendas, luego recorro cada lista y muestro lo que contienen para mostrar el atuendo.
 
@@ -36,15 +38,15 @@ public class Algoritmo {
 		//int temperaturaOpen = (int) Math.round(tempOPEN);
 		//int temperaturaAccu = (int) Math.round(tempACCU);
 
-		atuendoARetornar = obtenerAtuendo(atuendoARetornar,guardarropa.getPrendas(),3,2,1,1);
+		atuendoARetornar = obtenerAtuendo(atuendoARetornar,guardarropa.getPrendas());
 		return atuendoARetornar;
 	}
 	
-	public Atuendo obtenerAtuendo(Atuendo atuendoARetornar, List <Prenda> prendasPosibles,int capasSup,int capasInf, int capasAcc, int capasCal) {
-		atuendoARetornar.agregarP(obtenerPrendas(filtrarPrenda(prendasPosibles,"CALZADO"),capasCal));
-		atuendoARetornar.agregarP(obtenerPrendas(filtrarPrenda(prendasPosibles,"SUPERIOR"),capasSup));
-		atuendoARetornar.agregarP(obtenerPrendas(filtrarPrenda(prendasPosibles,"ACCESORIO"),capasAcc));
-		atuendoARetornar.agregarP(obtenerPrendas(filtrarPrenda(prendasPosibles,"INFERIOR"),capasInf));
+	public Atuendo obtenerAtuendo(Atuendo atuendoARetornar, List <Prenda> prendasPosibles) {
+		atuendoARetornar.agregarPrenda(obtenerPrendas(filtrarPrenda(prendasPosibles,"CALZADO")));
+		atuendoARetornar.agregarPrenda(obtenerPrendas(filtrarPrenda(prendasPosibles,"SUPERIOR")));
+		atuendoARetornar.agregarPrenda(obtenerPrendas(filtrarPrenda(prendasPosibles,"ACCESORIO")));
+		atuendoARetornar.agregarPrenda(obtenerPrendas(filtrarPrenda(prendasPosibles,"INFERIOR")));
 		return atuendoARetornar;
 		
 	}
@@ -63,7 +65,7 @@ public class Algoritmo {
 		int numero = (int)(Math.random());
 		return numero;
 	}
-	public List<Prenda> obtenerPrendas(List <Prenda> prendas, int capasMax) {
+	/* public List<Prenda> obtenerPrendas(List <Prenda> prendas) {
 		List <Prenda> listaAObtener = new ArrayList <Prenda> ();
 		int capasMaxima;
 		if (capasMax==1 || prendas.size()==1) {
@@ -81,17 +83,9 @@ public class Algoritmo {
 		} while (nivelCapa<(capasMaxima+1));
 			
 		return listaAObtener;
-	}
+	}*/
 	
-	public int buscarMaximo (List <Prenda> prendas) {
-		int max=1;
-		for (Prenda p: prendas) {
-			if (p.getNivelCapa()>max) {
-				max=p.getNivelCapa();
-			}
-		}
-		return max;	
-	}
+	
 	
 	public Prenda obtenerPrenda(List<Prenda> prendas) {
 		if (prendas.isEmpty()) {
@@ -117,25 +111,6 @@ public class Algoritmo {
 		this.cantidadDeAtuendosPosible = cantidadDeAtuendosPosible;
 	}
 	
-	public List<Atuendo> FiltrarAtuendosNivelAbrigo(List<Atuendo> atuendos,int tempRecibida,int tempPreferencia){
-		List<Atuendo> atuendosFiltrados = new ArrayList<Atuendo>();
-		int tempObtenida;
-		int limiteSuperior = tempPreferencia + 3;
-		int limiteInferior = tempPreferencia - 3;
-		if ((tempRecibida-tempPreferencia)<0) {
-			tempObtenida = tempRecibida;
-		} else {
-			tempObtenida = tempPreferencia;
-		}
-		for(int i=0;i<atuendos.size();i++) {
-			 int abrigoAtuendo = atuendos.get(i).calcularNivelAbrigo();
-			 tempObtenida = tempObtenida+abrigoAtuendo;
-			 if (tempObtenida>limiteInferior && tempObtenida<limiteSuperior) {
-							atuendosFiltrados.add(atuendos.get(i));			
-			}
-			tempObtenida = tempObtenida - abrigoAtuendo;
-		}
-		return atuendosFiltrados;
-	}
 
-}
+
+}//FIN ALGORITMO

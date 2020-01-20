@@ -1,4 +1,4 @@
-package pojo;
+package qmp;
 
 //import prendas.Prenda;
 
@@ -10,9 +10,8 @@ import java.util.List;
 //@Table(name="Atuendo")
 
 public class Atuendo /*extends EntidadPersistente*/ {
+//ATRIBUTOS------------------------------------------------------------------------------
 
-//	@Column(name="Puntaje")
-	private int puntaje = 0;
 	
 //	@ManyToMany (cascade= {CascadeType.ALL,CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE},fetch=FetchType.LAZY)
 //	@JoinTable(
@@ -29,7 +28,14 @@ public class Atuendo /*extends EntidadPersistente*/ {
 
 	//@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Guardarropa g;
-							
+//CONSTRUCTOR --------------------------------------
+	public Atuendo() {
+
+	}
+
+//METODOS - GETTERS Y SETTERS ---------------------------------------------------------------------------------------
+	
+	
 public List<Prenda> getPrendas() {
 	return prendas;
 }
@@ -45,14 +51,7 @@ public Guardarropa getG() {
 public void setG(Guardarropa g) {
 	this.g = g;
 }
-
-public int calcularNivelAbrigo() {
-	int acumulador = 0;
-	for(Prenda prenda:this.getPrendas()) {
-	    acumulador = acumulador + prenda.nivelAbrigo; 
-	}
-	return acumulador;
-}
+//METODOS------------------------------------------------------------------
 
 @Override
 public boolean equals(Object obj) {
@@ -75,7 +74,7 @@ public void limpiar() {
 	prendas.clear();
 }
 
-public void agregarP(List<Prenda> prendas) {
+public void agregarVariasPrendas(List<Prenda> prendas) {
 	this.prendas.addAll(prendas);
 }
 
@@ -91,18 +90,8 @@ public boolean compararAtuendo(Atuendo atuendo) {
 	return true;
 }
 
-public Atuendo() {
-
-	}
 
 
-public int getPuntaje() {
-	return puntaje;
-}
-
-public void setPuntaje(int puntaje) {
-	this.puntaje = puntaje;
-}
 
 public void agregarPrenda(Prenda unaPrenda) {
 	if (unaPrenda == null) {}
@@ -116,4 +105,4 @@ public String toString() {
 	return "Atuendo [" + prendas + "]";
 }
 
-}
+}//FIN ATUENDOS
