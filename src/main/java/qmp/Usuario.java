@@ -116,5 +116,11 @@ public class Usuario{
 		}
 		return existeUnGuardarropa;
 	}
+	
+	public Atuendo crearAtuendo(Guardarropa guardarropa) {
+		Atuendo unAtuendo=new Atuendo();
+		unAtuendo=guardarropa.obtenerAtuendo();
+		return unAtuendo;
+	}
 
 }//fin Usuario ------------------------------------------------------------------------------------------

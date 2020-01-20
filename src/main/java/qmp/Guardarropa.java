@@ -7,7 +7,7 @@ public class Guardarropa {
 	 
 	public String nombre;	 
 	private List<Prenda> prendas;
-//	private Algoritmo algoritmo;
+	private Algoritmo algoritmo;
 //	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
 //	private Usuario usuarioPerteneciente;
 
@@ -45,6 +45,13 @@ public class Guardarropa {
 	
 	public void agregarPrenda(Prenda unaPrenda) {
 		this.prendas.add(unaPrenda);
+	}
+
+
+	public Atuendo obtenerAtuendo() {
+		Atuendo atuendo= new Atuendo();
+		atuendo=algoritmo.originarAtuendoCon(this);
+		return atuendo;
 	}
 	
 	
