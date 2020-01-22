@@ -41,6 +41,15 @@ public class Guardarropa {
 		return prendas;
 	}
 	
+	public void setAlgoritmo(Algoritmo algoritmo) {
+		this.algoritmo = algoritmo;
+	}
+	
+	public Algoritmo getAlgoritmo() {
+		return algoritmo;
+	}
+	
+	
 //metodos 
 	
 	public void agregarPrenda(Prenda unaPrenda) {
@@ -50,7 +59,7 @@ public class Guardarropa {
 
 	public Atuendo obtenerAtuendo() {
 		Atuendo atuendo= new Atuendo();
-		atuendo=algoritmo.originarAtuendoCon(this);
+		atuendo=getAlgoritmo().originarAtuendoCon(this);
 		return atuendo;
 	}
 	

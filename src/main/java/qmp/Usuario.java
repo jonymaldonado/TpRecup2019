@@ -117,9 +117,9 @@ public class Usuario{
 		return existeUnGuardarropa;
 	}
 	
-	public Atuendo crearAtuendo(Guardarropa guardarropa) {
+	public Atuendo crearAtuendo() {
 		Atuendo unAtuendo=new Atuendo();
-		unAtuendo=guardarropa.obtenerAtuendo();
+		unAtuendo=this.getGuardarropas().obtenerAtuendo();
 		return unAtuendo;
 	}
 

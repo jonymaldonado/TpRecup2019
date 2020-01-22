@@ -1,15 +1,17 @@
 package qmp;
 
+
+
 public class Prenda {
 	
 	private String nombre;
-	private String categoriaPrenda;
+	private Categoria categoriaPrenda;
 	private String color;
 //constructor
-	public Prenda(String nombre, String categoria, String color) {
-		this.nombre = nombre;
-		this.categoriaPrenda = categoria;
-		this.color = color;
+	public Prenda(String nombre, Categoria categoria, String color) {
+		this.setNombre(nombre);
+		this.setCategoriaPrenda(categoria);
+		this.setColor(color);
 	}
 	
 	
@@ -25,10 +27,10 @@ public Prenda() {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getCategoriaPrenda() {
+	public Categoria getCategoriaPrenda() {
 		return categoriaPrenda;
 	}
-	public void setCategoriaPrenda(String categoriaPrenda) {
+	public void setCategoriaPrenda(Categoria categoriaPrenda) {
 		this.categoriaPrenda = categoriaPrenda;
 	}
 	public String getColor() {
@@ -39,6 +41,32 @@ public Prenda() {
 	}
 //metodos
 	//
-
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Prenda other = (Prenda) obj;
+		if (categoriaPrenda == null) {
+			if (other.categoriaPrenda != null)
+				return false;
+		} else if (!categoriaPrenda.equals(other.categoriaPrenda))
+			return false;
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
+	}
 
 }//fin Prenda

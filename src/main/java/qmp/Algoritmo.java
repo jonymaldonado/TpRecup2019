@@ -87,7 +87,7 @@ public class Algoritmo {
 		}
 
 	public List<Prenda> filtrarPrenda(List<Prenda> prendas, String categoria) {
-		return prendas.stream().filter(prenda->prenda.getCategoriaPrenda().contains(categoria)).collect(Collectors.toList());
+		return prendas.stream().filter(prenda->prenda.getCategoriaPrenda().getNombreCategoria().contains(categoria)).collect(Collectors.toList());
 	}
 
 	
@@ -129,9 +129,6 @@ public class Algoritmo {
 	
 	
 
-	public List<Prenda> buscarPrendas(List<Prenda> prendas) {
-		return prendas;		
-	}
 
 	
 
