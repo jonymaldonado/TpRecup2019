@@ -1,11 +1,20 @@
 package qmp;
 
-
-
-public class Prenda {
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+	@Entity
+	@Table(name="Prenda")
+public class Prenda extends EntidadPersistente{
 	
+	
+	@Column(name = "Nombre")
 	private String nombre;
+	@Transient
+	//@JoinColumn(name="categoria_id")
 	private Categoria categoriaPrenda;
+	@Column(name = "Color")
 	private String color;
 //constructor
 	public Prenda(String nombre, Categoria categoria, String color) {
@@ -18,7 +27,6 @@ public class Prenda {
 public Prenda() {
 		// TODO Apéndice de constructor generado automáticamente
 	}
-
 
 	//metodos - geters y seters
 	public String getNombre() {

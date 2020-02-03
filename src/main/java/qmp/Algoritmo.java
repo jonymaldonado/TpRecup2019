@@ -56,7 +56,7 @@ public class Algoritmo {
 		List<Prenda> prendasCalzado=new ArrayList<Prenda>();
 		
 		prendasSuperior=filtrarPrenda(prendasPosibles,"SUPERIOR");
-		prendasInferior=filtrarPrenda(prendasPosibles,"SUPERIOR");
+		prendasInferior=filtrarPrenda(prendasPosibles,"INFERIOR");
 		prendasCalzado=filtrarPrenda(prendasPosibles,"CALZADO");
 		
 			

@@ -1,8 +1,16 @@
 package qmp;
 
-public class Categoria {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="Categoria")
+public class Categoria extends EntidadPersistente{
 	
-	
+	@Transient
+	//@Column(name = "nombreCategoria")
 	private String nombreCategoria;
 
 	public Categoria(String nombreCategoria) {

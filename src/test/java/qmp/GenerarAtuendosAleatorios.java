@@ -49,14 +49,33 @@ public class GenerarAtuendosAleatorios{
 		guardarropa.agregarPrenda(jeans); //posicion 3
 		guardarropa.agregarPrenda(remera); //posicion 4
 		guardarropa.agregarPrenda(camisa); //posicion 5
-		
+		/*
 		Algoritmo algoritmo = new Algoritmo();
 		guardarropa.setAlgoritmo(algoritmo);
-		Atuendo atuendogenerado = guardarropa.getAlgoritmo().originarAtuendoCon(guardarropa);
-		resultadoObtenido = atuendogenerado.getPrendas();
-	
+		Atuendo atuendogenerado= new Atuendo();
+		
+		atuendogenerado= guardarropa.getAlgoritmo().originarAtuendoCon(guardarropa);
+		*/
 	}
-	
+	@Test
+	public void testAtuendoNoVacia() {
+
+		Algoritmo algoritmo = new Algoritmo();
+		guardarropa.setAlgoritmo(algoritmo);
+		Atuendo atuendogenerado= new Atuendo();
+		
+		atuendogenerado= guardarropa.getAlgoritmo().originarAtuendoCon(guardarropa);
+		int cantidadDePrendas;
+		cantidadDePrendas = atuendogenerado.cantidadDePrendas();
+		String detalleAtuendo = atuendogenerado.toString();
+		System.out.println(detalleAtuendo);
+		
+		assertTrue(cantidadDePrendas>0);
+		
+		
+	}
+
+	/*
 	@Test
 	public void Combinacion_1() {
 
@@ -66,8 +85,8 @@ public class GenerarAtuendosAleatorios{
 		resultadoEsperado.add(guardarropa.getPrendas().get(4)); //superior
 		resultadoEsperado.add(guardarropa.getPrendas().get(5)); //accesorio
 				
-		boolean resultado = ComparadorAtuendo(resultadoObtenido, resultadoEsperado);
-		assertTrue(resultado);
+		//boolean resultado = ComparadorAtuendo(resultadoObtenido, resultadoEsperado);
+		assertTrue(resultadoEsperado.);
 	}
 	
 	@Test
@@ -111,5 +130,5 @@ public class GenerarAtuendosAleatorios{
 		boolean resultado = ComparadorAtuendo(resultadoObtenido, resultadoEsperado);
 		assertTrue(resultado);
 	}
-	
-}
+	*/
+}//FIN GENERAR ATUENDOS

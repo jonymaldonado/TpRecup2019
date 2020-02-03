@@ -3,13 +3,21 @@ package qmp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Guardarropa {
+import javax.persistence.*;
+@Entity
+
+public class Guardarropa extends EntidadPersistente{
 	 
+	@Column(name="nombre")
 	public String nombre;	 
+	@Transient
 	private List<Prenda> prendas;
+	@Transient
 	private Algoritmo algoritmo;
-//	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
-//	private Usuario usuarioPerteneciente;
+	@Transient
+	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
+	@Transient
+	private Usuario usuarioPerteneciente;
 
 //constructor
 

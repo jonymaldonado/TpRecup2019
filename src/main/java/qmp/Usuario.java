@@ -1,16 +1,37 @@
 package qmp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-
-public class Usuario{
+@Entity
+@Table(name="Usuario")
+public class Usuario extends EntidadPersistente{
 	//atributos --------------------------------------------------------------------------------
+	@Column(name="nombre")
 	private String nombre;
+	@Column(name="apellido")
 	private String apellido;
+	@Column(name="nombreDeUsuario")
 	private String nombreDeUsuario;
+	@Column(name="password")
 	private String password;
+	@Column(name="edad")
 	private int edad;
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinTable(name = "Usuario_Guardarropa" 
+		        //joinColumns = { @JoinColumn(name = "usuario_id") },
+		        //inverseJoinColumns = { @JoinColumn(name = "guardarropa_id")}
+    )
 	private Guardarropa guardarropas;
+	@Column(name="correo")
 	private String correo;
+	@Column(name="celular")
 	private String celular;
 	
 	//constructor ---------------------------------------------------------------------------
