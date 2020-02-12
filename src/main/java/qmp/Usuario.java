@@ -3,6 +3,8 @@ package qmp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -11,28 +13,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Usuario")
-public class Usuario extends EntidadPersistente{
+public class Usuario {
 	//atributos --------------------------------------------------------------------------------
-	@Column(name="nombre")
-	private String nombre;
-	@Column(name="apellido")
-	private String apellido;
+	@Id
+	@GeneratedValue
+	@Column(name="idUsuario")
+	private int idUsuario;
+	@Column(name="nombreUsuario")
+	private String nombreUsuario;
+	@Column(name="apellidoUsuario")
+	private String apellidoUsuario;
 	@Column(name="nombreDeUsuario")
 	private String nombreDeUsuario;
 	@Column(name="password")
 	private String password;
-	@Column(name="edad")
-	private int edad;
+	@Column(name="edadUsuario")
+	private int edadUsuario;
 	@OneToOne(cascade = { CascadeType.ALL })
-	@JoinTable(name = "Usuario_Guardarropa" 
-		        //joinColumns = { @JoinColumn(name = "usuario_id") },
-		        //inverseJoinColumns = { @JoinColumn(name = "guardarropa_id")}
+	@JoinTable(name = "Usuario_Guardarropa" ,
+		        joinColumns = { @JoinColumn(name = "idUsuario") },
+		        inverseJoinColumns = { @JoinColumn(name = "idGuardarropa")}
     )
-	private Guardarropa guardarropas;
-	@Column(name="correo")
-	private String correo;
-	@Column(name="celular")
-	private String celular;
+	private Guardarropa guardarropa;
+	@Column(name="correoUsuario")
+	private String correoUsuario;
+	@Column(name="celularUsuario")
+	private String celularUsuario;
 	
 	//constructor ---------------------------------------------------------------------------
 	public Usuario(String nombre, String apellido, String nombreDeUsuario, String password, int edad, String correo, String celular) {
@@ -47,30 +53,37 @@ public class Usuario extends EntidadPersistente{
 		this.setGuardarropas(null);
 	}
 	
+	public Usuario() {
+		// TODO Apéndice de constructor generado automáticamente
+	}
+
 	//metodos - Getters y setters ---------------------------------------------------------------
+	public int getIdUsuario() {
+		return idUsuario;
+	}
 	
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.apellidoUsuario = apellido;
 	}
 	
 	public String getApellido() {
-		return apellido;
+		return apellidoUsuario;
 	}
 	
 	public Guardarropa getGuardarropas() {
-		return guardarropas;
+		return guardarropa;
 	}
 	
 	public void setGuardarropas(Guardarropa guardarropas) {
-		this.guardarropas = guardarropas;
+		this.guardarropa = guardarropas;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombreUsuario;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreUsuario = nombre;
 	}
 
 	public String getNombreDeUsuario() {
@@ -90,28 +103,28 @@ public class Usuario extends EntidadPersistente{
 	}
 
 	public int getEdad() {
-		return edad;
+		return edadUsuario;
 	}
 
 	public void setEdad(int edad) {
-		this.edad = edad;
+		this.edadUsuario = edad;
 	}
 	
 	public String getCorreo() {
-		return this.correo;
+		return this.correoUsuario;
 	}
 	
 
 	public void setCorreo(String correo) {
-		this.correo = correo;
+		this.correoUsuario = correo;
 	}
 
 	public String getCelular() {
-		return this.celular;
+		return this.celularUsuario;
 	}
 
 	public void setCelular(String celular) {
-		this.celular = celular;
+		this.celularUsuario = celular;
 	}
 	
 	//metodos --------------------------------------------------------------------------------------------
@@ -122,7 +135,7 @@ public class Usuario extends EntidadPersistente{
 			if (this.existenciaDeGuardarropa()) {
 				System.out.println("Ya tienes un Guardarropa");
 			} else {
-				this.setGuardarropas(guardarropaNueva);
+				this.agregarGuardarropa(guardarropaNueva);
 			}
 
 		}
@@ -143,5 +156,11 @@ public class Usuario extends EntidadPersistente{
 		unAtuendo=this.getGuardarropas().obtenerAtuendo();
 		return unAtuendo;
 	}
+	
+	public void agregarGuardarropa(Guardarropa unGuardarropa) {
+		this.setGuardarropas(unGuardarropa);
+		unGuardarropa.asignarUsuario(this);
+	}
+
 
 }//fin Usuario ------------------------------------------------------------------------------------------

@@ -4,8 +4,8 @@ import repositories.factories.FactoryRepositorioGuardarropas;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import pojo.Guardarropa;
-import pojo.Usuario;
+import qmp.Guardarropa;
+import qmp.Usuario;
 
 import java.util.HashMap;
 import java.util.List;
@@ -104,8 +104,8 @@ public class GuardarropasController {
 
         if(PrincipalController.tieneSessionUsuario(request)) {
         	Usuario usuarioBuscado= request.session().attribute("usuario");
-        	System.out.println(usuarioBuscado.getId());
-            List<Guardarropa> guardarropas = this.repo.buscarTodosXId(usuarioBuscado.getId());
+        	System.out.println(usuarioBuscado.getIdUsuario());
+            List<Guardarropa> guardarropas = this.repo.buscarTodosXId(usuarioBuscado.getIdUsuario());
             System.out.println(guardarropas);
             parametros.put("guardarropas", guardarropas);
             return new ModelAndView(parametros, "guardarropas.hbs");

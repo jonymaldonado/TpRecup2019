@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  	<title>Nueva Prenda</title>
+    <meta charset="utf-8">
+		<script src="/js/jquery-3.4.1.min.js"></script> 
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+		<script src="/js/jquery.steps.js"></script>
+		<script src="/js/form.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/test.css">
+		<link rel="stylesheet" href="/css/guardarropas.estilos.css">
+    </head>
+  <body>
+    <header>
+        <a href="/logout" class="btn-logout" title="Cerrar Sesion">
+                <button id="boton-Log-Out" type="button" class="fa fa-sign-out fa-5">
+                   <span class="glyphicon glyphicon-log-out"></span>Salir
+                </button>
+        </a>
+    </header>
+  
+         <form id="carga" action="#">
+            <div>
+		         <h3>Categoria</h3>
+              <section>
+                <label>Categoria</label>
+	            <select class="input-select" name="categoria" id="categoria" onchange="cargarTipoPrendas()" required>
+	                <option selected disabled></option>
+	                   {{#each categorias}}
+	                      <option value="{{id}}">{{categoria}}</option>
+	                   {{/each}}
+	            </select>
+              </section>     
+                   
+              <h3>Tipo de Prenda</h3>
+              <section>
+                <label>Tipo de Prenda</label>
+	            <select class="input-select" name="tipoPrenda" id="tipoPrenda" required>
+						 {{#each tipoPrendas}}
+	                          <option value="{{id}}">{{tipoPrenda}}</option>
+	                     {{/each}}
+	                </select>
+			</section>
+			
+			<h3>Tipo de Tela</h3>
+			<section>
+                <label>Tipo de Tela</label>	
+	                     {{#each tipoTelas}}
+	                     	<input type="radio" required name="tipoTela" value="{{id}}">{{nombreTela}}
+	                     {{/each}}
+             </section>
+			
+						<h3>Confirmacion</h3>
+			 <section>
+			    <label> Nombre de Prenda</label>
+                <input type="text" required autocomplete="off" name="nombreDePrenda"  class="input-datos" placeholder="Nombre de prenda">
+                <label>Seleccionar Color Primario</label>
+                <input type="color" name="colorPrimario">
+                <label>Seleccionar Color Secundario</label>
+                <input type="color" name="colorSecundario">
+                <label>Agregar imagen</label>
+                <input type="file" name="archivoSubido">
+             </section>
+             </section>
+
+			
+           </div>
+        </form>
+  </body>
+  </html>

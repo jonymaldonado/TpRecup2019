@@ -1,10 +1,8 @@
 package controllers;
 
-import pojo.Guardarropa;
-import prendas.Categoria;
-import prendas.Prenda;
-import prendas.TipoPrenda;
-import prendas.TipoTela;
+import qmp.Guardarropa;
+import qmp.Categoria;
+import qmp.Prenda;
 import repositories.*;
 import repositories.factories.*;
 import spark.ModelAndView;
@@ -39,12 +37,8 @@ public class PrendaController{
 
             Prenda prenda = this.repo.buscar(new Integer(request.params("id")));
             RepositorioCategoria repoCat = FactoryRepositorioCategoria.get();
-            RepositorioTipoPrenda repoTP = FactoryRepositorioTipoPrenda.get();
-            RepositorioTipoTela repoTela = FactoryRepositorioTipoTela.get();
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("tipoPrenda", repoTP.buscarTodos());
             parametros.put("categoria", repoCat.buscarTodos());
-            parametros.put("tipoTela", repoTela.buscarTodos());
             parametros.put("prenda", prenda);
             return new ModelAndView(parametros, "prenda.hbs");
         }else{
@@ -74,14 +68,10 @@ public class PrendaController{
 
         if(PrincipalController.tieneSessionUsuario(request)) {
             RepositorioCategoria repoCat = FactoryRepositorioCategoria.get();
-            RepositorioTipoPrenda repoTP = FactoryRepositorioTipoPrenda.get();
-            RepositorioTipoTela repoTela = FactoryRepositorioTipoTela.get();
             RepositorioGuardarropas guardarropas = FactoryRepositorioGuardarropas.get();
             Guardarropa guardarropa = guardarropas.buscar(new Integer(request.params("id")));
             parametros.put("guardarropas", guardarropa);
-            parametros.put("tipoPrendas", repoTP.buscarTodos());
             parametros.put("categorias", repoCat.buscarTodos());
-            parametros.put("tipoTelas", repoTela.buscarTodos());
             return new ModelAndView(parametros, "prenda.hbs");
         }else{
 
@@ -95,13 +85,13 @@ public class PrendaController{
         return new ModelAndView(parametros, "prenda1.hbs");
     }
     
-    public Response guardar(Request request, Response response) throws Exception{
+/*    public Response guardar(Request request, Response response) throws Exception{
 
         if(PrincipalController.tieneSessionUsuario(request)) {
             RepositorioGuardarropas guardarropas = FactoryRepositorioGuardarropas.get();
             Guardarropa guardarropa = guardarropas.buscar(new Integer(request.params("id")));
-            Prenda prenda = asignarAtributosA(request);
-            prenda.setG(guardarropa);
+         //   Prenda prenda = asignarAtributosA(request);
+       //     prenda.setG(guardarropa);
             this.repo.agregar(prenda);
             response.redirect("/prendas/" + (new Integer(request.params("id"))));
             return response;
@@ -109,9 +99,9 @@ public class PrendaController{
             response.redirect("/");
             return response;
         }
-    }
+    }*/
     
-    private Prenda asignarAtributosA(Request request) throws Exception{
+   /* private Prenda asignarAtributosA(Request request) throws Exception{
     	String nombre = null;
     	Categoria unaCat = null;
     	String nomTipoPrenda = null;
@@ -131,17 +121,9 @@ public class PrendaController{
             unaCat = repoCat.buscar(new Integer(request.queryParams("categoria")));
         }
 
-        if(request.queryParams("tipoPrenda") != null){
-            RepositorioTipoPrenda repoTP = FactoryRepositorioTipoPrenda.get();
-            TipoPrenda unTipoPrenda = repoTP.buscar(new Integer(request.queryParams("tipoPrenda")));
-            nomTipoPrenda = unTipoPrenda.getTipoPrenda();
-        }
 
-        if(request.queryParams("tipoTela") != null){
-            RepositorioTipoTela repoTT = FactoryRepositorioTipoTela.get();
-            TipoTela unTipoTela = repoTT.buscar(new Integer(request.queryParams("tipoTela")));
-            nomTipoTela = unTipoTela.getNombreTela();
-        }
+
+
 
         if(request.queryParams("nivelCapa") != null){
             nivelCapa = new Integer((request.queryParams("nivelCapa")));
@@ -182,35 +164,20 @@ public class PrendaController{
             prenda.setCategoriaPrenda(unaCat);
         }
 
-        if(request.queryParams("tipoPrenda") != null){
-            RepositorioTipoPrenda repoTP = FactoryRepositorioTipoPrenda.get();
-            TipoPrenda unTipoPrenda = repoTP.buscar(new Integer(request.queryParams("tipoPrenda")));
-            prenda.setTipoPrenda(unTipoPrenda.getTipoPrenda());
-        }
 
-        if(request.queryParams("tipoTela") != null){
-            RepositorioTipoTela repoTT = FactoryRepositorioTipoTela.get();
-            TipoTela unTipoTela = repoTT.buscar(new Integer(request.queryParams("tipoTela")));
-            prenda.setTipoDeTela(unTipoTela.getNombreTela());
-        }
+
+
         
         if(request.queryParams("colorPrimario") != null){
-            prenda.setColorPrimario(request.queryParams("colorPrimario"));
-        }
+            prenda.setColor(request.queryParams("colorPrimario"))
         
-        if(request.queryParams("colorSecundario") != null){
-            prenda.setColorSecundario(request.queryParams("colorSecundario"));
-        }
-
-        if(request.queryParams("pathImagen")!= null){
-            String path = request.queryParams("pathImagen");
-            path = prenda.normalizarImagen(path);
-            prenda.setUrlImagen(path);
-        }
     }
+
+
+*/
     
 
-    public Response modificar(Request request, Response response){
+  /*  public Response modificar(Request request, Response response){
         Prenda prenda = this.repo.buscar(new Integer(request.params("id")));
         int guardarropa = prenda.getG().getId();
         asignarAtributosA(prenda, request);
@@ -218,7 +185,7 @@ public class PrendaController{
         response.redirect("/prendas/" + guardarropa);
         return response;
     }
-
+*/
 
     public Response eliminar(Request request, Response response){
 

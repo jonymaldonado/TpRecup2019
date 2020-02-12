@@ -1,26 +1,40 @@
 package qmp;
 
+import java.util.*;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 	@Entity
 	@Table(name="Prenda")
-public class Prenda extends EntidadPersistente{
+public class Prenda {
+	@Id
+	@GeneratedValue
+	@Column(name = "idPrenda")
+	private int idPrenda;
 	
-	
-	@Column(name = "Nombre")
-	private String nombre;
-	@Transient
-	//@JoinColumn(name="categoria_id")
+	@Column(name = "nombrePrenda")
+	private String nombrePrenda;
+	@ManyToOne
+	//@JoinColumn(name="idCategoria")
 	private Categoria categoriaPrenda;
-	@Column(name = "Color")
-	private String color;
-//constructor
+	@Column(name = "colorPrenda")
+	private String colorPrenda;
+	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name ="guardarropaPerteneciente")
+	private Guardarropa guardarropaPerteneciente;
+	@ManyToMany(mappedBy = "prendas", fetch = FetchType.LAZY)
+	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
+	
+//constructor-----------------------------------------------------------------------
 	public Prenda(String nombre, Categoria categoria, String color) {
 		this.setNombre(nombre);
 		this.setCategoriaPrenda(categoria);
 		this.setColor(color);
+		this.setCategoriaPrenda(null);
+		this.setGuardarropaPerteneciente(null);
 	}
 	
 	
@@ -28,12 +42,13 @@ public Prenda() {
 		// TODO Apéndice de constructor generado automáticamente
 	}
 
-	//metodos - geters y seters
+	//metodos - geters y seters--------------------------------------------------------
+
 	public String getNombre() {
-		return nombre;
+		return nombrePrenda;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombrePrenda = nombre;
 	}
 	public Categoria getCategoriaPrenda() {
 		return categoriaPrenda;
@@ -42,12 +57,35 @@ public Prenda() {
 		this.categoriaPrenda = categoriaPrenda;
 	}
 	public String getColor() {
-		return color;
+		return colorPrenda;
 	}
 	public void setColor(String color) {
-		this.color = color;
+		this.colorPrenda = color;
 	}
-//metodos
+	
+	public void setIdPrenda(int idPrenda) {
+		this.idPrenda = idPrenda;
+	}
+	
+	public int getIdPrenda() {
+		return idPrenda;
+	}
+	
+	public Guardarropa getGuardarropaPerteneciente() {
+		return guardarropaPerteneciente;
+	}
+	
+	public void setGuardarropaPerteneciente(Guardarropa guardarropaPerteneciente) {
+		this.guardarropaPerteneciente = guardarropaPerteneciente;
+	}
+	public List<Atuendo> getAtuendos() {
+		return atuendos;
+	}
+	public void setAtuendos(List<Atuendo> atuendos) {
+		this.atuendos = atuendos;
+	}
+	
+//metodos------------------------------------------------------------------
 	//
 	
 	@Override
@@ -64,15 +102,15 @@ public Prenda() {
 				return false;
 		} else if (!categoriaPrenda.equals(other.categoriaPrenda))
 			return false;
-		if (color == null) {
-			if (other.color != null)
+		if (colorPrenda == null) {
+			if (other.colorPrenda != null)
 				return false;
-		} else if (!color.equals(other.color))
+		} else if (!colorPrenda.equals(other.colorPrenda))
 			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
+		if (nombrePrenda == null) {
+			if (other.nombrePrenda != null)
 				return false;
-		} else if (!nombre.equals(other.nombre))
+		} else if (!nombrePrenda.equals(other.nombrePrenda))
 			return false;
 		return true;
 	}

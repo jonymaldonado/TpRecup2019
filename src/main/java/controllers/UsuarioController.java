@@ -1,6 +1,6 @@
 package controllers;
 
-import pojo.Usuario;
+import qmp.Usuario;
 import repositories.RepositorioUsuario;
 import repositories.factories.FactoryRepositorioUsuario;
 import spark.ModelAndView;
@@ -41,7 +41,7 @@ public ModelAndView mostrar(Request request,Response response) {
 
 		Map<String, Object> parametros= new HashMap<>();
 		parametros.put("usuario", usuarioBuscado);
-		parametros.put("id", usuarioBuscado.getId());
+		parametros.put("id", usuarioBuscado.getIdUsuario());
 		
  		ModelAndView vista= new ModelAndView(parametros, "usuario.hbs");
 		
@@ -135,7 +135,7 @@ public ModelAndView mostrar(Request request,Response response) {
 		try {
             if(req.session().attribute("usuario") != null){
                 Usuario usuarioSession = req.session().attribute("usuario");
-                int idUser=usuarioSession.getId();
+                int idUser=usuarioSession.getIdUsuario();
                 res.redirect("/inicio");
                 //return  res;
                 return new ModelAndView(model, "inicio.hbs");
@@ -152,7 +152,7 @@ public ModelAndView mostrar(Request request,Response response) {
 
                 model.clear();
                 model.put("usuario", usuariobase);
-                int idUsers = usuariobase.getId();
+                int idUsers = usuariobase.getIdUsuario();
                 //res.redirect("/usuario/" + idUsers);
                 res.redirect("/inicio");
                 //return res;

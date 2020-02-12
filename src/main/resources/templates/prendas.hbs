@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="icon" href="img/logosolo.png">
+    <link rel="stylesheet" href="/css/usuarios.estilos.css">
+
+    <title>Prendas</title>
+  </head>
+  <body id="body">
+    <header>
+      <img src="/img/untlogo.png" alt="utn logo" class="utnLogo">
+      <div class="diseniologo">
+        <img src="/img/logosolo.png" alt="diseniologo" style="">
+        <p>Diseño de Sistemas</p>
+      </div>
+
+       <a href="/logout" class="btn-logout" title="Cerrar Sesion">
+               <button id="boton-Log-Out" type="button" class="fa fa-sign-out fa-5">
+                  <span class="glyphicon glyphicon-log-out"></span>Salir
+               </button>
+       </a>
+    </header>
+    <div class="main_container">
+      <h1 class="encabezado"><i class="fas fa-users"></i> Prendas</h1>
+      <input type="text" name="" value="" placeholder="Buscar" id="inputUsuario">
+      <a href="/prenda/{{guardarropa.id}}" class="btn-border-blue fuente"><i class="fas fa-user-plus" style="margin-bottom:25px;"></i> Nueva Prenda</a>
+      <table class="tabla" id="tabla">
+        <thead>
+          <th><i class="fas fa-user"></i> Imagen</th>
+          <th><i class="fas fa-user"></i> Nombre</th>
+          <th><i class="fas fa-user"></i> Categoria</th>
+          <th><i class="fas fa-user"></i> TipoPrenda</th>
+          <th><i class="fas fa-user"></i> Tela</th>
+          <th><i class="fas fa-user"></i> Color</th>
+          <th><i class="fas fa-tools"></i> Acciones</th>
+        </thead>
+        <tbody>
+        {{#each prendas}}
+        <tr>
+            <td> <img src={{urlImagen}}/></td>
+            <td> {{nombre}}</td>
+            <td> {{categoriaPrenda.categoria}}</td>
+            <td> {{tipoPrenda}}</td>
+            <td> {{tipoDeTela}}</td>
+            <td> <input type="color" name="colorPrimario" value="{{colorPrimario}}" disabled></td>
+            <td>
+                <a href="/mostrarPrenda/{{id}}" name="button" class=" btn btn-edit"><i class="fas fa-user-edit"></i></a>
+                <button type="button" name="button" class="btn" onclick="confirmarEliminacion('{{id}}')"><i class="fas fa-trash"></i></button>
+            </td>
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+      <a href="/guardarropas" class="btn-border-blue" style="">Volver</a>
+    </div>
+  </body>
+
+
+
+  <!-- ================= MODAL ELIMINACION ================== -->
+  <div class="modalEliminar modal" id="modalEliminar">
+    <div class="modalContent">
+        <input id="prendaId" type="hidden" value="">
+      <p>¿Desea eliminar la prenda?</p>
+      <button type="button" name="button" class="btn-close-modal" onclick="cerrarModal()" ><i class="fas fa-times-circle"></i></button>
+      <br>
+      <div class="">
+        <button type="button" name="button" class="btn-rojo" onclick="eliminarPrenda()">Eliminar</button>
+        <button type="button" name="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <!-- ================= FIN MODAL ELIMINACION ================== -->
+
+
+ <script>
+	 function confirmarEliminacion(id){
+	  document.getElementById("prendaId").value = id;
+	  document.getElementById("modalEliminar").style.display = 'block';
+	}
+	
+	function eliminarPrenda(){
+	    var id = document.getElementById("prendaId").value;
+	    $.ajax({
+	        type: "DELETE",
+	        url: "prenda/"+id,
+	        success: function(result){
+	            location.reload(true);
+	        }
+	    });
+	}
+	
+	function cerrarModal(){
+  		document.getElementsByClassName("modal")[0].style.display = 'none';
+	}
+
+ </script>
+
+</html>

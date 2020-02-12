@@ -1,9 +1,9 @@
-package controllers;
+ package controllers;
 
-import pojo.Atuendo;
-import pojo.Guardarropa;
-import pojo.Usuario;
-import prendas.Prenda;
+import qmp.Atuendo;
+import qmp.Guardarropa;
+import qmp.Usuario;
+import qmp.Prenda;
 import repositories.RepositorioAtuendo;
 import repositories.RepositorioGuardarropas;
 import repositories.RepositorioPrenda;
@@ -21,12 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import administradorEventos.AdministradorEvento;
-import algoritmoAleatorio.Algoritmo;
-import algoritmoAleatorio.algoritmoTemperatura;
-import api.OpenWeatherMap;
-import api.apiDelClima;
-import db.EntityManagerHelper;
+import qmp.Algoritmo;
+
 
 public class AtuendoController {
     private RepositorioAtuendo repo;
@@ -38,14 +34,13 @@ public class AtuendoController {
         this.repoUsuario = FactoryRepositorioUsuario.get();
         this.repoGuardarropa = FactoryRepositorioGuardarropas.get();
     }
-
+/*
     public ModelAndView mostrarTodos(Request request, Response response) throws ParseException {
         ModelAndView vista;
         Map<String, Object> parametros = new HashMap<>();
 
         if(PrincipalController.tieneSessionUsuario(request)) {
-        	apiDelClima unaApiDelClima = new OpenWeatherMap();
-        	AdministradorEvento adminEvento = new AdministradorEvento();
+
         	List<Atuendo> sugerencias = new ArrayList<Atuendo>();
             algoritmoTemperatura unAlgoritmo = new algoritmoTemperatura(unaApiDelClima);
             double tempOPEN = unAlgoritmo.solicitarTemperatura("Buenos Aires","2019-12-22 21:00:00");
@@ -71,13 +66,13 @@ public class AtuendoController {
                   }
                 EntityManagerHelper.commit();
         	}
-        	/*
+ */       	/*
          	EntityManagerHelper.beginTransaction();
             for (int i=0;i<g.getAtuendosTotales().size();i++) {
               	 EntityManagerHelper.getEntityManager().persist(g.atuendosTotales.get(i));
             }
             EntityManagerHelper.commit();
-        	 */
+        	 
             List<Atuendo> atuendos = this.repo.buscarTodosPorId(new Integer(request.params("id")));
             parametros.put("atuendos", atuendos);
             vista = new ModelAndView(parametros, "atuendos.hbs");
@@ -108,14 +103,14 @@ public class AtuendoController {
         }
     }
 
-
+*/
     public Response eliminar(Request request, Response response){
     	Atuendo atuendo = this.repo.buscar(new Integer(request.params("id")));
         this.repo.eliminar(atuendo);
         return response;
     }
     
-    public Response guardarAtuendo (Request request, Response response) throws ParseException {
+  /*  public Response guardarAtuendo (Request request, Response response) throws ParseException {
     	Atuendo atuendo = this.repo.buscar(new Integer(request.queryParams("id")));
     	atuendo.setPuntaje(new Integer(request.queryParams("puntaje")));
     	this.repo.modificar(atuendo);
@@ -144,5 +139,5 @@ public class AtuendoController {
     		 System.out.println("Error");
     		 return response;
     	 }
-    }
+    }*/
 }

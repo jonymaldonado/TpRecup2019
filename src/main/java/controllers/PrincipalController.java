@@ -1,7 +1,7 @@
 package controllers;
 
 
-import pojo.Usuario;
+import qmp.Usuario;
 import repositories.RepositorioUsuario;
 import spark.ModelAndView;
 import spark.Request;
@@ -19,6 +19,23 @@ public class PrincipalController {
 	}
 	
 	public ModelAndView mostrarPaginaPrincipal(Request req, Response res) {
+		ModelAndView vista;
+		
+		vista= new ModelAndView(model,"ingresar.hbs");
+
+			return vista;
+
+	}
+	public ModelAndView bienvenida(Request req, Response res) {
+		ModelAndView vista;
+		
+		vista= new ModelAndView(model,"bienvenido.hbs");
+		
+		return vista;
+		
+	}
+	
+	/*public ModelAndView mostrarPaginaPrincipal(Request req, Response res) {
 
 		ModelAndView vista;
 		if(PrincipalController.tieneSessionUsuario(req)) {
@@ -34,15 +51,15 @@ public class PrincipalController {
 			return vista;
 		}
 
-	}
+	}*/
 	
-	public ModelAndView insertarUsuario(Request req, Response res) {
+	/*public ModelAndView insertarUsuario(Request req, Response res) {
  		ModelAndView insertar= new ModelAndView(model,"usuario_insertar.hbs");
 		
 		return insertar;
-	}
+	}*/
 	
-	public ModelAndView ingresarUsuario(Request req, Response res) {
+	/*public ModelAndView ingresarUsuario(Request req, Response res) {
 
 		if(res.body() != null && !res.body().isEmpty()){
 
@@ -61,7 +78,7 @@ public class PrincipalController {
 			return ingresar;
 		}
 
-	}
+	}*/
         //Levo este metodo a UsuarioController
     /*
 	public ModelAndView validar(Request req, Response res) {

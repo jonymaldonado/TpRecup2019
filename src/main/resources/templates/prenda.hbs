@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <script type="text/javascript">
+         function pathCompleto() {
+            var fil = document.getElementById("myFile").value;
+            //var filePath = $(this).val();
+            document.getElementsByName("pathImagen").value = fil;
+            console.log(fil);
+            console.log("1");
+            }
+  </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="icon" href="/img/logosolo.png">
+    <link rel="stylesheet" href="/css/usuarios.estilos.css">
+    <link rel="stylesheet" href="/css/guardarropas.estilos.css">
+    <title>Nueva Prenda</title>
+  </head>
+  <body>
+
+    <header>
+      <img src="/img/untlogo.png" alt="utn logo" class="utnLogo">
+      <div class="diseniologo">
+        <img src="/img/logosolo.png" alt="diseniologo" style="">
+        <p>Diseño de Sistemas</p>
+      </div>
+
+      <a href="/logout" class="btn-logout" title="Cerrar Sesion">
+              <button id="boton-Log-Out" type="button" class="fa fa-sign-out fa-5">
+                 <span class="glyphicon glyphicon-log-out"></span>Salir
+              </button>
+      </a>
+    </header>
+    
+    
+    <div class="main_container">
+
+      <div class="contenedor-carta-usuario">
+        <div class="carta-usuario">
+          <form class="" {{#if prenda}} action="/modificarPrenda/{{prenda.id}}" method="post" {{else}} action="/prenda/{{guardarropas.id}}" method="post" {{/if}} style="">
+
+            <div class="form-cargar-prenda">
+              <div class="" style="text-align:center;">
+                <label for="input-img-usuario"><img src="/img/usuario.png" class="imagen-perfil" alt=""></label>
+                <input id="input-img-usuario" type="file" name="" value="" style="display:none;">
+              </div>
+
+              <div class="" style="margin:40px;">
+                <label><i class="fas fa-user"></i> Nombre de Prenda</label>
+                <br>
+                <input type="text" required autocomplete="off" name="nombreDePrenda"  class="input-datos" placeholder="Nombre de prenda" {{#if prenda}}value="{{prenda.nombre}}" {{/if}}>
+                <br>
+                <br>
+                <label><i class="fas fa-file-signature"></i>Categoria</label>
+                <br>
+                {{#if prenda}}
+                    <select class="input-select" name="categoria" id="categoria" required>
+	                     <option value="" selected disabled>{{prenda.categoriaPrenda.categoria}}</option>
+	                     {{#each categorias}}
+	                       <option value="{{id}}">{{categoria}}</option>
+	                     {{/each}}
+	                </select>
+                {{else}}
+	                <select class="input-select" name="categoria" id="categoria" onchange="cargarTipoPrendas()" required>
+	                   <option selected disabled></option>
+	                     {{#each categorias}}
+	                       <option value="{{id}}">{{categoria}}</option>
+	                     {{/each}}
+	                </select>
+                {{/if}}
+                <br>
+                <br>
+                <label><i class="fas fa-file-signature"></i>Tipo de Prenda</label>
+                <br>
+                {{#if prenda}}
+                    <select class="input-select" name="tipoPrenda" id="tipoPrenda" required>
+	                     <option value="" selected disabled>{{prenda.tipoPrenda}}</option>
+	                     {{#each tipoPrendas}}
+	                       <option value="{{id}}">{{tipoPrenda}}</option>
+	                     {{/each}}
+	                </select>
+                {{else}}
+	                <select class="input-select" name="tipoPrenda" id="tipoPrenda" required>
+						 {{#each tipoPrendas}}
+	                          <option value="{{id}}">{{tipoPrenda}}</option>
+	                     {{/each}}
+	                </select>
+                {{/if}}
+                <br>
+                <br>
+                <label><i class="fas fa-calendar-alt"></i>Tipo de Tela</label>
+                <br>
+                <br>
+                {{#if prenda}}
+	                <select class="input-select" name="tipoTela" id="tipoTela" required>
+	                	      <option value="" selected disabled>{{prenda.tipoDeTela}}</option>
+						 {{#each tipoTelas}}
+	                          <option value="{{id}}">{{nombreTela}}</option>
+	                     {{/each}}
+	                </select>
+	                        
+                {{else}}
+	               
+	                     {{#each tipoTelas}}
+	                     	<input type="radio" required name="tipoTela" value="{{id}}">{{nombreTela}}
+	                     {{/each}}
+                {{/if}}
+              </div>
+              <div class="" style="margin:40px;">
+                <label><i class="fas fa-phone"></i>Seleccionar Color Primario</label>
+                <br>
+                {{#if prenda}}
+                <input type="color" name="colorPrimario" value="{{prenda.colorPrimario}}">
+                {{else}}
+                <input type="color" name="colorPrimario">
+                {{/if}}
+                <br>
+                <br>
+                <label><i class="fas fa-phone"></i>Seleccionar Color Secundario</label>
+                <br>
+                {{#if prenda}}
+                <input type="color" name="colorSecundario" value="{{prenda.colorSecundario}}">
+                {{else}}
+                <input type="color" name="colorSecundario">
+                {{/if}}
+                <br>
+                <br>
+                <label><i class="fas fa-phone"></i>Agregar imagen</label>
+                <br>
+                <br>
+                <input type="file" id="myFile" name="pathImagen" onchange="pathCompleto();">
+
+              </div>
+            </div>
+            {{#if prenda}}
+                <input type="submit" name="" class="btn-verde" style="float:right;"  value="Guardar cambios">
+            {{else}}
+                <input type="submit" name="" class="btn-verde" style="float:right;"  value="Crear Prenda">
+            {{/if}}
+            {{#if prenda}}
+            	<a href="/prendas/{{prenda.g.id}}" class="btn-border-blue" style="">Volver</a>
+            {{else}}
+            <a href="/prendas/{{guardarropas.id}}" class="btn-border-blue" style="">Volver</a>
+            {{/if}}
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  </html>

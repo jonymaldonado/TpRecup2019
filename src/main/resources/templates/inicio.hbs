@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+    <script src="https://kit.fontawesome.com/fd23e90bfd.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code:400,500&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/logosolo.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Que me pongo 2019</title>
+  </head>
+  <body> 
+    <header>
+      	<img src="/img/untlogo.png" alt="utn logo" class="utnLogo">
+      	<img src="/img/qmp-logo.png" alt="utn logo" class="utnLogo">
+      	<a href="/logout" class="btn-logout" title="Cerrar Sesion">
+           <button id="boton-Log-Out" type="button" class="fa fa-sign-out fa-5">
+              <span class="glyphicon glyphicon-log-out"></span>Salir
+           </button>
+        </a>
+    </header>
+   
+    <div class="main_container">
+           					<div class="cardutn" id="1">
+           						<div class="iconimg">
+           							<i class="fas fa-user fa-5x" style="color:#f44336;"></i>
+           						</div>
+           						<div class=carddesc>
+                             			<p style="font-weight: bold;">Mis Datos</p>
+                             			<p style="font-size: 15px;">Editar sus Datos Personales</p>
+								</div>
+							</div>
+							
+							<div class="cardutn" id="4">
+								<div class="iconimg">
+									<i class="fas fa-tshirt fa-5x" style="color:#f44336;"></i>
+								</div>
+								<div class=carddesc>
+                            		<p style="font-weight: bold;">Guardarropas</p>
+                            		<p style="font-size: 15px;">Lista de guardarropas</p>
+                            	</div>
+							</div>
+							
+							<div class="cardutn" id="6">
+								<div class="iconimg">
+									<i class="fas fa-user-tie fa-5x" style="color:#f44336;"></i>
+								</div>
+								<div class=carddesc>
+                            		<p style="font-weight: bold;">Sugerencias</p>
+                            		<p style="font-size: 15px;">Lista de atuendos aceptados</p>
+                            	</div>
+							</div>							
+							
+							<div class="cardutn" id="5">
+								<div class="iconimg">
+									<i class="fas fa-calendar-day fa-5x" style="color:#f44336;"></i>
+								</div>
+								<div class=carddesc>
+                            		<p style="font-weight: bold;">Eventos</p>
+                            		<p style="font-size: 15px;">Lista de eventos</p>
+                            	</div>
+							</div>
+
+
+    </div>
+  </body>
+	<script type="text/javascript">
+    	document.getElementById("1").onclick = function () {
+        	location.href = "usuario";
+   		};
+	</script>
+	<script type="text/javascript">
+    	document.getElementById("4").onclick = function () {
+        	location.href = "guardarropas";
+    	};
+	</script>
+	<script type="text/javascript">
+    	document.getElementById("5").onclick = function () {
+        	location.href = "eventos";
+    	};
+	</script>
+	<script type="text/javascript">
+    	document.getElementById("6").onclick = function () {
+        	location.href = "atuendosSugeridos";
+    	};
+	</script>
+</html>

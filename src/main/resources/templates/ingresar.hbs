@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/27517fada0.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/generales.js"></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="icon" href="/img/logosolo.png">
+    <link rel="stylesheet" href="/css/usuario_ingresar.css">
+    <title>Que me pongo 2019</title>
+  </head>
+  <body> 
+   <header>
+      <img src="/img/qmp-logo.png" alt="utn logo" class="utnLogo">
+    </header>
+   
+    <div class="main_container">
+   
+<!-- ingresar Usuario -->
+      <div class="contenedor-carta-usuario">
+        <div class="carta-usuario">
+          <form class="" action="/usuarios/validar" method="get" style="">Ingreso de Usuario
+
+            <div class="form-cargar-usuario">
+              <div class="" style="text-align:center;">
+                <label for="input-img-usuario"><img src="/img/usuario.png" class="imagen-perfil" alt=""></label>
+                <input id="input-img-usuario" type="file" name="" value="" style="display:none;">
+              </div>
+
+              <div class="" style="margin:40px;">
+                <label><i class="fas fa-user"></i> Usuario</label>
+                <br>
+                <input type="text" name="usuario"  class="input-datos" placeholder="Usuario" required>
+                <br>
+                <br>
+                <label><i class="fas fa-unlock-alt"> </i> Contraseña</label>
+                <br>
+                <input type="password" name="clave" value="" class="input-datos" placeholder="Contraseña" value="" required>
+                <br>
+                <br>
+                <p id="errorIngreso">{{mensaje}}</p>
+                </div>
+                <br>
+                <br>
+
+            </div>
+            <a href="/" class="btn-rojo" style="float:left;" title="Volver a la pantalla principal">Volver</a>
+
+             <button type="submit" name="" class="btn-rojo" style=""  value="Ingresar" title="Ingresar a la pantalla del Usuario">Ingresar</button>
+            
+            <a href="usuario_insertar" class="btn-rojo"  style="margin-right: 1em;"title="Ingresar un Nuevo Usuario"><i class="fas_fa-user-plus" ></i> Nuevo usuario</a>
+        </div>
+          </form>
+          
+        </div>
+      </div>
+
+    </div>
+  </body>
+
+  </html>

@@ -6,44 +6,58 @@ import java.util.List;
 import javax.persistence.*;
 @Entity
 
-public class Guardarropa extends EntidadPersistente{
-	 
-	@Column(name="nombre")
-	public String nombre;	 
-	@Transient
+public class Guardarropa{
+	//atributos---------------------------------------------------------
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "idGuardarropa")
+	private int idGuardarropa;
+	
+	@Column(name="nombreGuardarropa")
+	public String nombreGuardarropa;	 
+	@OneToMany (fetch=FetchType.LAZY, cascade=CascadeType.ALL,mappedBy="guardarropaPerteneciente")
 	private List<Prenda> prendas;
 	@Transient
 	private Algoritmo algoritmo;
-	@Transient
+	 @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	 @JoinColumn(name="idGuardarropa")
 	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
-	@Transient
+	
+	@OneToOne(mappedBy="guardarropa")
+	@JoinColumn(name="usuarioPerteneciente")
 	private Usuario usuarioPerteneciente;
 
-//constructor
+//constructor---------------------------------------------------------
 
 	public Guardarropa(String nombre) {
 		 this.prendas = new ArrayList<Prenda>();
 //		 this.usuarioPerteneciente=null;
 		 this.setNombre(nombre);
 		 }
-//metodos getters y setters
+//metodos getters y setters--------------------------------------------------
 	
 
+	public Guardarropa() {
+		// TODO Apéndice de constructor generado automáticamente
+	}
+
+
 	public String getNombre() {
-	return nombre;
+	return nombreGuardarropa;
 
 	} 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreGuardarropa = nombre;
 	}
 
-/*	public Usuario getUsuarioPerteneciente() {
+	public Usuario getUsuarioPerteneciente() {
 		return usuarioPerteneciente;
 	}	
 	public void setUsuarioPerteneciente(Usuario usuarioPerteneciente) {
 		this.usuarioPerteneciente = usuarioPerteneciente;
 	}
-*/
+
 	
 	public List<Prenda> getPrendas() {
 		return prendas;
@@ -57,8 +71,16 @@ public class Guardarropa extends EntidadPersistente{
 		return algoritmo;
 	}
 	
+	public int getIdGuardarropa() {
+		return idGuardarropa;
+	}
 	
-//metodos 
+	public void setIdGuardarropa(int idGuardarropa) {
+		this.idGuardarropa = idGuardarropa;
+	}
+	
+	
+//metodos------------------------------------------
 	
 	public void agregarPrenda(Prenda unaPrenda) {
 		this.prendas.add(unaPrenda);
@@ -71,7 +93,9 @@ public class Guardarropa extends EntidadPersistente{
 		return atuendo;
 	}
 	
-	
+	public void asignarUsuario(Usuario usuario) {
+		this.setUsuarioPerteneciente(usuario);
+	}
 	
 	
 	

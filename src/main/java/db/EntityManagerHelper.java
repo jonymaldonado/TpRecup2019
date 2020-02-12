@@ -94,6 +94,11 @@ public class EntityManagerHelper {
         }
     }
 
+	public void index() {
+		// TODO Apéndice de método generado automáticamente
+		
+	}
+
     /* public void index() throws Exception {
 
         String negro = "#000000";
