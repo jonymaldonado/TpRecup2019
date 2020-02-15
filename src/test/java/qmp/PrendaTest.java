@@ -1,9 +1,11 @@
 package qmp;
 
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import db.EntityManagerHelper;
 
 import java.awt.*;
 
@@ -26,6 +28,7 @@ public class PrendaTest {
 	Prenda pantalon2;
 	Prenda zapato1;
 	Prenda zapato2;
+	Prenda campera;
 
 	Color ladrillo;
 	Color marron;
@@ -64,12 +67,22 @@ public class PrendaTest {
 	assertFalse(pantalon1.equals(pantalon2));
 
 	}
+	
+	@Test
+	public void testAgregarUnaPrenda() throws Exception {
+		campera = new Prenda("CamperaJeans", superior,"#FF0000");
+		EntityManagerHelper.beginTransaction();
+		EntityManagerHelper.persist(campera);		
+		EntityManagerHelper.commit();
+		
+	Prenda p = (Prenda) EntityManagerHelper.createQuery("from Prenda where nombrePrenda = 'CamperaJeans'").getSingleResult();
+		Assert.assertEquals(7, p.getIdPrenda());	
+		
+	}
 
     @Test
     public void testCategoria() throws  Exception{
-
-        assertEquals(remera1.getCategoriaPrenda(),superior);
-
+      
         assertFalse(zapato1.getCategoriaPrenda().equals(inferior));
 
     }

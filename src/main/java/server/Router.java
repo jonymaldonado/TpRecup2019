@@ -34,7 +34,7 @@ public class Router {
     	PrincipalController paginaController= new PrincipalController();
     	AtuendoController atuendoController = new AtuendoController();
 
-        //Spark.get("/", paginaController::ingresarUsuario, Router.engine);
+        Spark.get("/", paginaController::mostrarPaginaPrincipal, Router.engine);
 
      	Spark.get("/prendas", prendaController::mostrarTodos,Router.engine);
     	Spark.get("/prendas/:id", prendaController::buscarPorGuardarropa,Router.engine);
@@ -45,8 +45,8 @@ public class Router {
         Spark.delete("prendas/prenda/:id", prendaController::eliminar);
 
 
-        Spark.get("/guardarropas", guardarropaController::mostrarTodosXId, Router.engine);
-        Spark.get("/guardarropa/:id", guardarropaController::mostrar, Router.engine);
+      //  Spark.get("/guardarropas", guardarropaController::mostrarTodosXId, Router.engine);
+        Spark.get("/guardarropa", guardarropaController::mostrar, Router.engine);
         Spark.get("/guardarropa", guardarropaController::crear, Router.engine);
         Spark.post("/guardarropa/:id", guardarropaController::modificar);
         Spark.post("/guardarropa", guardarropaController::guardar);
@@ -54,7 +54,7 @@ public class Router {
 
 
 
-        Spark.delete("/usuario/:id", usuarioController::eliminar);
+        Spark.delete("/usuario/:idUsuario", usuarioController::eliminar);
 
         Spark.get("/usuario", usuarioController::mostrar, Router.engine);
         //Spark.get("/usuario/:id", usuarioController::modificar);
@@ -66,7 +66,7 @@ public class Router {
         
         Spark.get("/usuarios", usuarioController::mostrartodos,Router.engine);
 
-       // Spark.get("/usuario_insertar", paginaController::insertarUsuario,Router.engine);
+        Spark.get("/usuario_insertar", paginaController::insertarUsuario,Router.engine);
 
        // Spark.get("/usuario_ingresar", paginaController::ingresarUsuario,Router.engine);
 
@@ -80,7 +80,7 @@ public class Router {
     //    Spark.post("/eliminarAtuendo", atuendoController::eliminarAtuendo);
 
         Spark.get("/logout", usuarioController::logoutUsuario);
-        Spark.get("/inicio", paginaController::mostrarPaginaPrincipal,Router.engine);
+        Spark.get("/inicio", paginaController::bienvenida,Router.engine);
 
         
     }

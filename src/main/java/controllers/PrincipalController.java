@@ -29,35 +29,19 @@ public class PrincipalController {
 	public ModelAndView bienvenida(Request req, Response res) {
 		ModelAndView vista;
 		
-		vista= new ModelAndView(model,"bienvenido.hbs");
+		vista= new ModelAndView(model,"inicio.hbs");
 		
 		return vista;
 		
 	}
 	
-	/*public ModelAndView mostrarPaginaPrincipal(Request req, Response res) {
 
-		ModelAndView vista;
-		if(PrincipalController.tieneSessionUsuario(req)) {
-
-			vista= new ModelAndView(model,"inicio.hbs");
-
-			return vista;
-
-		}
-		else{
-			vista = new ModelAndView(model, "ingresar.hbs");
-
-			return vista;
-		}
-
-	}*/
 	
-	/*public ModelAndView insertarUsuario(Request req, Response res) {
+	public ModelAndView insertarUsuario(Request req, Response res) {
  		ModelAndView insertar= new ModelAndView(model,"usuario_insertar.hbs");
 		
 		return insertar;
-	}*/
+	}
 	
 	/*public ModelAndView ingresarUsuario(Request req, Response res) {
 
@@ -85,7 +69,7 @@ public class PrincipalController {
 		ModelAndView validar= new ModelAndView(model,"inicio.hbs");
 
 		return validar;
-	}*/
+	}
 	
 	public ModelAndView mostrarEventos(Request req, Response res) {
 		ModelAndView ingresar;
@@ -97,13 +81,13 @@ public class PrincipalController {
 
 			return devolverIngresar();
 		}
-	}
+	}*/
 	
 	/*public ModelAndView ingresarUsuario(Request req, Response res) {
  		ModelAndView ingresar= new ModelAndView(model,"usuario_ingreso.hbs");
 		
 		return ingresar;
-	}*/
+	}
 
 	public static Boolean tieneSessionUsuario(Request req){
 
@@ -114,7 +98,7 @@ public class PrincipalController {
 		}else {
 			return false;
 		}
-	}
+	}*/
 
 	public static ModelAndView devolverIngresar(){
 		Map<String,Object> model=new HashMap<>();

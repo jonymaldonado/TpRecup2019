@@ -16,23 +16,24 @@ public class Guardarropa{
 	
 	@Column(name="nombreGuardarropa")
 	public String nombreGuardarropa;	 
-	@OneToMany (fetch=FetchType.LAZY, cascade=CascadeType.ALL,mappedBy="guardarropaPerteneciente")
+	@OneToMany (mappedBy="guardarropaPerteneciente", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Prenda> prendas;
 	@Transient
 	private Algoritmo algoritmo;
 	 @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	 @JoinColumn(name="idGuardarropa")
+	 @JoinColumn(name="atuendosGuardarropa")
 	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
-	
-	@OneToOne(mappedBy="guardarropa")
+	@Transient
+	@OneToOne(mappedBy="guardarropa", fetch = FetchType.LAZY)
 	@JoinColumn(name="usuarioPerteneciente")
-	private Usuario usuarioPerteneciente;
+	
+	 private Usuario usuarioPerteneciente;
 
 //constructor---------------------------------------------------------
 
 	public Guardarropa(String nombre) {
 		 this.prendas = new ArrayList<Prenda>();
-//		 this.usuarioPerteneciente=null;
+		 this.usuarioPerteneciente=null;
 		 this.setNombre(nombre);
 		 }
 //metodos getters y setters--------------------------------------------------
@@ -84,6 +85,7 @@ public class Guardarropa{
 	
 	public void agregarPrenda(Prenda unaPrenda) {
 		this.prendas.add(unaPrenda);
+		unaPrenda.setGuardarropaPerteneciente(this);
 	}
 
 

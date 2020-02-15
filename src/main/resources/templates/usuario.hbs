@@ -40,22 +40,31 @@
                 <br>
                 <input type="text" name="nombreDeUsuario"  class="input-datos" placeholder="Usuario" {{#if usuario}}value="{{usuario.nombreDeUsuario}}" {{/if}}>
                 <br>
+                <!-- NOMBRE -->
                 <br>
                 <label><i class="fas fa-file-signature"></i>  Nombre</label>
                 <br>
                 <input type="text" name="nombre" {{#if usuario}} value="{{usuario.nombre}}" {{/if}} class="input-datos" placeholder="Nombre">
                 <br>
+                <!-- APELLIDO -->
+                <br>
+                <input type="text" name="nombre" {{#if usuario}} value="{{usuario.nombre}}" {{/if}} class="input-datos" placeholder="Nombre">
+                <br>
+                <br>
+                <!-- EMAIL -->      
                 <br>      
               <!-- <div class="" style="margin:40px;"> -->
                 <label><i class="fas fa-envelope"></i> E-mail</label>
                 <br>
                 <input type="email"  name="email" {{#if usuario}} value="{{usuario.correo}}" {{/if}} class="input-datos" placeholder="E-mail">
                 <br>
+                <!-- CELULAR -->
                 <br>
                 <label><i class="fas fa-phone"></i> Celular</label>
                 <br>
                 <input type="number"  class="input-datos" name="celular" {{#if usuario}} value="{{usuario.celular}}" {{/if}} placeholder="celular">
                 <br>
+                <!-- CONTRASEÑA -->
                 <br>
                 <label><i class="fas fa-unlock-alt"> </i> Contraseña</label>
                 <br>
@@ -69,8 +78,8 @@
                     <input type="submit" name="" class="btn-rojo" style="float:right;"  value="Guardar cambios">
                     <!--<a href="/usuario/{{usuario.id}}"  class="btn-rojo" style="float:right;"title="Editar tus datos">Editar</a>-->
                 {{/if}}
-            <a href="/guardarropa/{{id}}" class="btn-rojo" style="float:right;"title="Ver todos tus guardarropas">Mis Guardarropas</a>
-            <a href="/eventos" class="btn-rojo" style="float:right;"title="Ver todos tus eventos">Mis Eventos</a>
+            <a href="/guardarropa/{{idGuardarropa}}" class="btn-rojo" style="float:right;"title="Ver todos tus guardarropas">Mis Guardarropas</a>
+            <!-- <a href="/eventos" class="btn-rojo" style="float:right;"title="Ver todos tus eventos">Mis Eventos</a> -->
             <!--{{#if usuario}}
                 <input type="submit" name="" class="btn-verde" style="float:right;"  value="Guardar cambios">
             {{else}}

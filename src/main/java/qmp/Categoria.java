@@ -14,9 +14,10 @@ public class Categoria {
 	@GeneratedValue
 	@Column(name = "idCategoria")
 	private int idCategoria;
-	@Transient
-	//@Column(name = "nombreCategoria")
+	
+	@Column(name = "nombreCategoria")
 	private String nombreCategoria;
+	
 
 	public Categoria(String nombreCategoria) {
 		

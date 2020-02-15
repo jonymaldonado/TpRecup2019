@@ -16,17 +16,17 @@ public class Prenda {
 	
 	@Column(name = "nombrePrenda")
 	private String nombrePrenda;
-	@ManyToOne
-	//@JoinColumn(name="idCategoria")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="idCategoria")
 	private Categoria categoriaPrenda;
 	@Column(name = "colorPrenda")
 	private String colorPrenda;
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY )
 	@JoinColumn(name ="guardarropaPerteneciente")
 	private Guardarropa guardarropaPerteneciente;
-	@ManyToMany(mappedBy = "prendas", fetch = FetchType.LAZY)
-	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
+	//@ManyToMany(mappedBy = "prendas", fetch = FetchType.LAZY)
+	//private List<Atuendo> atuendos = new ArrayList<Atuendo>();
 	
 //constructor-----------------------------------------------------------------------
 	public Prenda(String nombre, Categoria categoria, String color) {
@@ -78,12 +78,12 @@ public Prenda() {
 	public void setGuardarropaPerteneciente(Guardarropa guardarropaPerteneciente) {
 		this.guardarropaPerteneciente = guardarropaPerteneciente;
 	}
-	public List<Atuendo> getAtuendos() {
+	/*public List<Atuendo> getAtuendos() {
 		return atuendos;
 	}
 	public void setAtuendos(List<Atuendo> atuendos) {
 		this.atuendos = atuendos;
-	}
+	}*/
 	
 //metodos------------------------------------------------------------------
 	//

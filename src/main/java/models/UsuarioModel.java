@@ -20,9 +20,10 @@ public class UsuarioModel extends Model {
         return EntityManagerHelper.getEntityManager().createQuery("from Usuario").getResultList();
     }
 
-    @Override
-    public Usuario buscar(int id){
-        return EntityManagerHelper.getEntityManager().find(Usuario.class, id);
+    @SuppressWarnings("unchecked")
+	@Override
+    public Usuario buscar(int idUsuario){
+        return EntityManagerHelper.getEntityManager().find(Usuario.class, idUsuario);
     }
 
 	
@@ -30,7 +31,7 @@ public class UsuarioModel extends Model {
 	public Usuario consultarYBuscar(String user, String pass) {
 		// TODO Auto-generated method stub
        // Usuario usuario = (Usuario) EntityManagerHelper.createQuery("from Usuario where password = :pass and nombreDeUsuario = :user").setParameter("pass",pass).setParameter("user",user).getSingleResult();
-        Integer id = (Integer) EntityManagerHelper.createQuery("select id from Usuario where password = :pass and nombreDeUsuario = :user").setParameter("pass",pass).setParameter("user",user).getSingleResult();
+        Integer id = (Integer) EntityManagerHelper.createQuery("select idUsuario from Usuario where password = :pass and nombreDeUsuario = :user").setParameter("pass",pass).setParameter("user",user).getSingleResult();
         //Usuario usuario = (Usuario) EntityManagerHelper.createQuery("from Usuario where nombre = 'UsuarioPrueba1'").getSingleResult();
         Usuario usuario = this.buscar(id);
         //return EntityManagerHelper.getEntityManager().find(Usuario.class, 1);

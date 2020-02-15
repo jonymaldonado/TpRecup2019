@@ -18,42 +18,32 @@ public class GuardarropasController {
         this.repo = FactoryRepositorioGuardarropas.get();
     }
 
-    public ModelAndView mostrarTodos(Request request, Response response) {
+    /*public ModelAndView mostrarTodos(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
-
-        if(PrincipalController.tieneSessionUsuario(request)) {
-            List<Guardarropa> guardarropas = this.repo.buscarTodos();
+ List<Guardarropa> guardarropas = this.repo.buscarTodos();
             parametros.put("guardarropas", guardarropas);
             return new ModelAndView(parametros, "guardarropas.hbs");
-        }else{
-            return PrincipalController.devolverIngresar();
-        }
-    }
+        
+    }*/
 
     public ModelAndView mostrar(Request request, Response response){
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
-            Guardarropa guardarropa = this.repo.buscar(new Integer(request.params("id")));
+    	Guardarropa guardarropa = this.repo.buscar(new Integer(request.params("id")));
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("guardarropa", guardarropa);
             return new ModelAndView(parametros, "guardarropa.hbs");
-        }else{
-            return PrincipalController.devolverIngresar();
-        }
+        
     }
 
     public Response modificar(Request request, Response response){
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
+        
             Guardarropa guardarropa = this.repo.buscar(new Integer(request.params("id")));
             asignarAtributosA(guardarropa, request);
             this.repo.modificar(guardarropa);
             response.redirect("/guardarropas");
             return response;
-        }else{
-            response.redirect("/");
-            return response;
-        }
+        
     }
 
     private void asignarAtributosA(Guardarropa guardarropa, Request request){
@@ -65,52 +55,40 @@ public class GuardarropasController {
 
     public ModelAndView crear(Request request, Response response){
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
+        
             Map<String, Object> parametros = new HashMap<>();
             return new ModelAndView(parametros, "guardarropa.hbs");
-        }else{
-            return PrincipalController.devolverIngresar();
-        }
+        
     }
 
     public Response guardar(Request request, Response response){
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
-            Guardarropa guardarropa = new Guardarropa();
+        Guardarropa guardarropa = new Guardarropa();
             asignarAtributosA(guardarropa, request);
             this.repo.agregar(guardarropa);
             response.redirect("/guardarropas");
             return response;
-        }else{
-            response.redirect("/");
-            return response;
-        }
+        
     }
 
     public Response eliminar(Request request, Response response){
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
+        
             Guardarropa guardarropa = this.repo.buscar(new Integer(request.params("id")));
             this.repo.eliminar(guardarropa);
             return response;
-        }else{
-            response.redirect("/");
-            return response;
-        }
+        
     }
     
-    public ModelAndView mostrarTodosXId(Request request, Response response) {
+ /*   public ModelAndView mostrarTodosXId(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
-        	Usuario usuarioBuscado= request.session().attribute("usuario");
+         	Usuario usuarioBuscado= request.session().attribute("usuario");
         	System.out.println(usuarioBuscado.getIdUsuario());
             List<Guardarropa> guardarropas = this.repo.buscarTodosXId(usuarioBuscado.getIdUsuario());
             System.out.println(guardarropas);
             parametros.put("guardarropas", guardarropas);
             return new ModelAndView(parametros, "guardarropas.hbs");
-        }else{
-            return PrincipalController.devolverIngresar();
-        }
-    }
+        
+    }*/
 }

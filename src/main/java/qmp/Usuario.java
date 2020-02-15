@@ -41,7 +41,7 @@ public class Usuario {
 	private String celularUsuario;
 	
 	//constructor ---------------------------------------------------------------------------
-	public Usuario(String nombre, String apellido, String nombreDeUsuario, String password, int edad, String correo, String celular) {
+	public Usuario(String nombre, String apellido, String nombreDeUsuario, String password, int edad, String correo, String string) {
 
 		this.setNombre(nombre);
 		this.setApellido(apellido);
@@ -49,7 +49,7 @@ public class Usuario {
 		this.setPassword(password);
 		this.setEdad(edad);
 		this.setCorreo(correo);
-		this.setCelular(celular);
+		this.setCelular(string);
 		this.setGuardarropas(null);
 	}
 	

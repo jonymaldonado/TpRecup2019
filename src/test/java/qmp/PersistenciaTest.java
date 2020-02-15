@@ -57,7 +57,7 @@ public class PersistenciaTest {
         pantalon2.setG(ropaVerano);
         zapato1.setG(ropaVerano);
         zapato2.setG(ropaVerano);*/
-        //usuarioPrueba.agregarGuardarropa(ropaVerano);      
+              
 
         ropaVerano.agregarPrenda(remera1);
         ropaVerano.agregarPrenda(remera2);
@@ -66,8 +66,8 @@ public class PersistenciaTest {
         ropaVerano.agregarPrenda(zapato1);
         ropaVerano.agregarPrenda(zapato2);
         
-        
-        
+        usuarioPrueba=new Usuario("Lucas", "Saclier", "lsaclier", "dds2020", 43, "lsaclier@gmail.com", "1122334455");
+        usuarioPrueba.agregarGuardarropa(ropaVerano);
         Algoritmo alg = new Algoritmo();
         
         ropaVerano.setAlgoritmo(alg);
@@ -93,47 +93,21 @@ public class PersistenciaTest {
 
         EntityManagerHelper.commit();
         
-        /*
 
-     //   EntityManagerHelper.getEntityManager().persist(sensi);
-        EntityManagerHelper.getEntityManager().persist(ropaVerano);
-     //   EntityManagerHelper.getEntityManager().persist(usuarioPrueba);
-       // EntityManagerHelper.getEntityManager().persist(pruebaEvento1);
-        EntityManagerHelper.commit();}
-   /*     
-
->>>>>>> 307f129426ccfdff3f03f8c8a942da07fdc3cbc3
-    	Guardarropa g = new Guardarropa("Ropa Formal");
-    	Usuario usuario = (Usuario) EntityManagerHelper.createQuery("from Usuario where nombre = 'UsuarioPrueba1'").getSingleResult();
-    	Evento pruebaEvento = new Evento("Evento Empresa","2019-10-15","09:00:00","Caballito",usuario,g,MENSUAL);
-    	usuario.agregarUnEvento(pruebaEvento);
-    	EntityManagerHelper.beginTransaction();
-    	EntityManagerHelper.getEntityManager().persist(g);
-    	EntityManagerHelper.getEntityManager().persist(pruebaEvento);
-    	EntityManagerHelper.getEntityManager().merge(usuario);
-    	EntityManagerHelper.commit();
-	
-    	Sensibilidad sensibilidad = (Sensibilidad) EntityManagerHelper.createQuery("from Sensibilidad where nombre = 'Sensibilidades'").getSingleResult();
-    	sensibilidad.agregarParteSensible("Manos");
-    	EntityManagerHelper.beginTransaction();
-    	EntityManagerHelper.getEntityManager().merge(sensibilidad);
-    	EntityManagerHelper.commit();
-
-*/
     }
 
 	@Test public void recuperandoDatos() throws Exception {
 
 
 
-	Categoria inferior1 = (Categoria) EntityManagerHelper.createQuery("from Categoria where categoria = 'inferior'").getSingleResult();
+	Categoria inferior1 = (Categoria) EntityManagerHelper.createQuery("from Categoria where nombreCategoria = 'inferior'").getSingleResult();
 	Assert.assertEquals(2, inferior1.getIdCategoria());
-    Prenda p = (Prenda) EntityManagerHelper.createQuery("from Prenda where nombre = 'Zapas'").getSingleResult();
-	Assert.assertEquals(1, p.getIdPrenda());
-	Guardarropa g = (Guardarropa) EntityManagerHelper.createQuery("from Guardarropa where nombre = 'RopaVerano'").getSingleResult();
+    Prenda p = (Prenda) EntityManagerHelper.createQuery("from Prenda where nombrePrenda = 'Zapato Negro Masculino'").getSingleResult();
+	Assert.assertEquals(5, p.getIdPrenda());
+	Guardarropa g = (Guardarropa) EntityManagerHelper.createQuery("from Guardarropa where nombreGuardarropa = 'RopaVerano'").getSingleResult();
 	Assert.assertEquals(1, g.getIdGuardarropa());
-	Usuario usu1 = (Usuario) EntityManagerHelper.createQuery("from Usuario where nombre = 'UsuarioPrueba1'").getSingleResult();
-	Assert.assertEquals(1, usu1.getIdUsuario());
+	/*uario usu1 = (Usuario) EntityManagerHelper.createQuery("from Usuario where nombre = 'UsuarioPrueba'").getSingleResult();
+	Assert.assertEquals(1, usu1.getIdUsuario());*/
 
 	}
 }

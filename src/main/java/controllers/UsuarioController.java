@@ -35,9 +35,9 @@ public class UsuarioController {
 	
 public ModelAndView mostrar(Request request,Response response) {
 
-	    //int idUsers=new Integer(request.params("id"));
-		//Usuario usuarioBuscado=this.repo.buscar(idUsers);
-        Usuario usuarioBuscado= request.session().attribute("usuario");
+	    int idUsers=new Integer(request.params("idUsuario"));
+		Usuario usuarioBuscado=this.repo.buscar(idUsers);
+        //Usuario usuarioBuscado= request.session().attribute("usuario");
 
 		Map<String, Object> parametros= new HashMap<>();
 		parametros.put("usuario", usuarioBuscado);
@@ -102,16 +102,16 @@ public ModelAndView mostrar(Request request,Response response) {
 
     public Response eliminar(Request request, Response response){
 
-        if(PrincipalController.tieneSessionUsuario(request)) {
+       /* if(PrincipalController.tieneSessionUsuario(request)) {
             Usuario usuario = this.repo.buscar(new Integer(request.params("id")));
             this.repo.eliminar(usuario);
             response.redirect("/usuarios");
             return response;
-        }else{
+      //  }else{
             response.redirect("/");
-            return response;
-
-        }
+            return response; }
+*/
+       return response;
     }
 
 
@@ -131,35 +131,37 @@ public ModelAndView mostrar(Request request,Response response) {
     }*/
     public ModelAndView validarUsuario(Request req, Response res)throws IOException {
 			Map<String, Object> model = new HashMap<>();
+			
+			
 
 		try {
-            if(req.session().attribute("usuario") != null){
-                Usuario usuarioSession = req.session().attribute("usuario");
-                int idUser=usuarioSession.getIdUsuario();
-                res.redirect("/inicio");
+//            if(req.session().attribute("usuario") != null){
+//                Usuario usuarioSession = req.session().attribute("usuario");
+//                int idUser=usuarioSession.getIdUsuario();
+//                res.redirect("/inicio");
                 //return  res;
-                return new ModelAndView(model, "inicio.hbs");
+//                return new ModelAndView(model, "inicio.hbs");
 
-            }else {
-                String usuario = req.queryParams("usuario");
-                String contrasenia = req.queryParams("clave");
-                Usuario usuariobase = repo.consultarYBuscar(usuario, contrasenia);
+//            }else {*/
+                String nombreDeUsuario = req.queryParams("usuario");
+                String password = req.queryParams("clave");
+                Usuario usuariobase = repo.consultarYBuscar(nombreDeUsuario, password);
 
 
-                Session session = req.session(true);
-                session.attribute("usuario", usuariobase);
+              //  Session session = req.session(true);
+              //  session.attribute("usuario", usuariobase);
                 //session.maxInactiveInterval(1800);//30 Min en Segundos
 
                 model.clear();
                 model.put("usuario", usuariobase);
-                int idUsers = usuariobase.getIdUsuario();
+ //               int idUsers = usuariobase.getIdUsuario();
                 //res.redirect("/usuario/" + idUsers);
                 res.redirect("/inicio");
                 //return res;
                 return new ModelAndView(model, "inicio.hbs");
                 //return new ModelAndView(model, "inicio.hbs");
 
-            }
+            //}
 
 		}
 		catch(Exception e){
@@ -178,7 +180,7 @@ public ModelAndView mostrar(Request request,Response response) {
 
 	public Response logoutUsuario(Request req,Response res){
 
-        req.session().invalidate();
+        //req.session().invalidate();
 
         res.redirect("/");
         return res;

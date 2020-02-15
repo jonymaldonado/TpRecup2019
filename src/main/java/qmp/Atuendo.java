@@ -24,6 +24,10 @@ public class Atuendo {
 	)
 	private List<Prenda> prendas = new ArrayList<Prenda>();
 	
+	@ManyToOne(cascade =CascadeType.ALL)
+	@JoinColumn(name = "guardarropaCorrespondiente")
+	private Guardarropa guardarropaCorrespondiente;
+	
 	//@ManyToMany(mappedBy = "atuendos", fetch = FetchType.LAZY)
 	//private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
