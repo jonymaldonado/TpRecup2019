@@ -18,13 +18,13 @@ public class GuardarropasController {
         this.repo = FactoryRepositorioGuardarropas.get();
     }
 
-    /*public ModelAndView mostrarTodos(Request request, Response response) {
+    public ModelAndView mostrarTodos(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
  List<Guardarropa> guardarropas = this.repo.buscarTodos();
             parametros.put("guardarropas", guardarropas);
             return new ModelAndView(parametros, "guardarropas.hbs");
         
-    }*/
+    }
 
     public ModelAndView mostrar(Request request, Response response){
 
@@ -80,7 +80,7 @@ public class GuardarropasController {
         
     }
     
- /*   public ModelAndView mostrarTodosXId(Request request, Response response) {
+   public ModelAndView mostrarTodosXId(Request request, Response response) {
         Map<String, Object> parametros = new HashMap<>();
 
          	Usuario usuarioBuscado= request.session().attribute("usuario");
@@ -90,5 +90,5 @@ public class GuardarropasController {
             parametros.put("guardarropas", guardarropas);
             return new ModelAndView(parametros, "guardarropas.hbs");
         
-    }*/
+   }
 }

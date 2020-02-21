@@ -16,7 +16,7 @@ public class Prenda {
 	
 	@Column(name = "nombrePrenda")
 	private String nombrePrenda;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinColumn(name="idCategoria")
 	private Categoria categoriaPrenda;
 	@Column(name = "colorPrenda")

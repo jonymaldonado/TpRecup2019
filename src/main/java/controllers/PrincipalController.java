@@ -105,4 +105,9 @@ public class PrincipalController {
 		ModelAndView ingresar = new ModelAndView(model, "ingresar.hbs");
 		return ingresar;
 	}
+
+	public static boolean tieneSessionUsuario(Request request) {
+		// TODO Apéndice de método generado automáticamente
+		return false;
+	}
 }

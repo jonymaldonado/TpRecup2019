@@ -37,6 +37,9 @@
                 <label><i class="fas fa-file-signature"></i>  Nombre</label>
                 <br>
                 <input type="text" name="nombre" {{#if usuario}} value="{{usuario.nombre}}" {{/if}} class="input-datos" placeholder="Nombre">
+                <br> }
+                <br>
+                <input type="text" name="apellido" {{#if usuario}} value="{{usuario.apellido}}" {{/if}} class="input-datos" placeholder="Apellido">
                 <br>
                 <br>      
               <!-- <div class="" style="margin:40px;"> -->
@@ -59,8 +62,8 @@
                 <input type="submit" name="" class="btn-rojo" style="float:right;"  value="Guardar cambios">
                 {{else}}
                 <input type="submit" name="" class="btn-rojo" title="Crear usuario" style="float:right;"  value="Crear usuario">
-                {{/if}}
-                <a href="/" class="btn-rojo" style="float:left;"title="Volver a la pantalla principal">Volver</a>
+                <!-- {{/if}}
+                <a href="/" class="btn-rojo" style="float:left;"title="Volver a la pantalla principal">Volver</a> -->
               <!-- </div> -->
             </div>
           </form>

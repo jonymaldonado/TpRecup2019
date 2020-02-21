@@ -23,7 +23,7 @@ public class GuardarropasModel extends Model {
     @Override
     public List<Guardarropa> buscarTodosXId(int id){
     	System.out.println(id);
-        return EntityManagerHelper.getEntityManager().createQuery("SELECT g FROM Usuario u join u.guardarropas g where u.id=:id").setParameter("id", id).getResultList();
+        return EntityManagerHelper.getEntityManager().createQuery("SELECT guardarropa FROM Usuario u join u.guardarropa  where u.idUsuario=:id").setParameter("id", id).getResultList();
     }
 
     @Override

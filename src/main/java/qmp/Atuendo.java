@@ -34,9 +34,9 @@ public class Atuendo {
 	// Se deja comentado, recuperar el Guardarropas desde las prendas.
 
 	//@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	/*@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="guardarropa")
-	private Guardarropa guardarropa;
+	private Guardarropa guardarropa;*/
 //CONSTRUCTOR --------------------------------------------------------------
 	public Atuendo() {
 
@@ -55,13 +55,13 @@ public class Atuendo {
 	this.prendas = prendas;
 }
 
-	public Guardarropa getGuardarropa() {
+	/*public Guardarropa getGuardarropa() {
 	return guardarropa;
 }
 
 	public void setGuardarropa(Guardarropa guardarropa) {
 	this.guardarropa = guardarropa;
-}
+}*/
 	//METODOS------------------------------------------------------------------
 	
 	@Override

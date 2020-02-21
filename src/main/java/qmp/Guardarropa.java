@@ -16,12 +16,21 @@ public class Guardarropa{
 	
 	@Column(name="nombreGuardarropa")
 	public String nombreGuardarropa;	 
-	@OneToMany (mappedBy="guardarropaPerteneciente", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToMany (cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinTable(
+		       name = "Guardarropa_Prenda", 
+			        joinColumns = { @JoinColumn(name = "idGuardarropa") },
+			        inverseJoinColumns = { @JoinColumn(name = "idPrenda")}
+		)
 	private List<Prenda> prendas;
 	@Transient
 	private Algoritmo algoritmo;
 	 @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	 @JoinColumn(name="atuendosGuardarropa")
+	 @JoinTable(
+		       name = "Guardarropa_Atuendo", 
+			        joinColumns = { @JoinColumn(name = "idGuardarropa") },
+			        inverseJoinColumns = { @JoinColumn(name = "idAtuendo")}
+		)
 	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
 	@Transient
 	@OneToOne(mappedBy="guardarropa", fetch = FetchType.LAZY)

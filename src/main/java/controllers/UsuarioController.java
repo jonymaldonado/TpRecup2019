@@ -20,6 +20,7 @@ public class UsuarioController {
 	private RepositorioUsuario repo;
 //	private RepositorioGuardarropa repoGuardarropa;
 	
+	
 	public UsuarioController() {
 		this.repo= FactoryRepositorioUsuario.get();
 	}
@@ -35,9 +36,9 @@ public class UsuarioController {
 	
 public ModelAndView mostrar(Request request,Response response) {
 
-	    int idUsers=new Integer(request.params("idUsuario"));
-		Usuario usuarioBuscado=this.repo.buscar(idUsers);
-        //Usuario usuarioBuscado= request.session().attribute("usuario");
+	  //  int idUsers=new Integer(request.params("idUsuario"));
+	  //	Usuario usuarioBuscado=this.repo.buscar(idUsers);
+        Usuario usuarioBuscado= request.session().attribute("usuario");
 
 		Map<String, Object> parametros= new HashMap<>();
 		parametros.put("usuario", usuarioBuscado);
@@ -135,33 +136,33 @@ public ModelAndView mostrar(Request request,Response response) {
 			
 
 		try {
-//            if(req.session().attribute("usuario") != null){
-//                Usuario usuarioSession = req.session().attribute("usuario");
-//                int idUser=usuarioSession.getIdUsuario();
-//                res.redirect("/inicio");
-                //return  res;
-//                return new ModelAndView(model, "inicio.hbs");
+            if(req.session().attribute("usuario") != null){
+                Usuario usuarioSession = req.session().attribute("usuario");
+                int idUser=usuarioSession.getIdUsuario();
+                res.redirect("/inicio");
+//                return  res;
+                return new ModelAndView(model, "inicio.hbs");
 
-//            }else {*/
+            }else {
                 String nombreDeUsuario = req.queryParams("usuario");
                 String password = req.queryParams("clave");
                 Usuario usuariobase = repo.consultarYBuscar(nombreDeUsuario, password);
 
 
-              //  Session session = req.session(true);
-              //  session.attribute("usuario", usuariobase);
-                //session.maxInactiveInterval(1800);//30 Min en Segundos
+                Session session = req.session(true);
+                session.attribute("usuario", usuariobase);
+                session.maxInactiveInterval(1800);//30 Min en Segundos
 
                 model.clear();
                 model.put("usuario", usuariobase);
- //               int idUsers = usuariobase.getIdUsuario();
+                int idUsers = usuariobase.getIdUsuario();
                 //res.redirect("/usuario/" + idUsers);
                 res.redirect("/inicio");
                 //return res;
                 return new ModelAndView(model, "inicio.hbs");
                 //return new ModelAndView(model, "inicio.hbs");
 
-            //}
+            }
 
 		}
 		catch(Exception e){
