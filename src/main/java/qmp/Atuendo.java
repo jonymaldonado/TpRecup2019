@@ -28,15 +28,7 @@ public class Atuendo {
 	@JoinColumn(name = "guardarropaCorrespondiente")
 	private Guardarropa guardarropaCorrespondiente;//esto fue modificado
 	
-	//@ManyToMany(mappedBy = "atuendos", fetch = FetchType.LAZY)
-	//private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
-	// Se deja comentado, recuperar el Guardarropas desde las prendas.
-
-	//@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	/*@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name="guardarropa")
-	private Guardarropa guardarropa;*/
 //CONSTRUCTOR --------------------------------------------------------------
 	public Atuendo() {
 
@@ -55,13 +47,7 @@ public class Atuendo {
 	this.prendas = prendas;
 }
 
-	/*public Guardarropa getGuardarropa() {
-	return guardarropa;
-}
-
-	public void setGuardarropa(Guardarropa guardarropa) {
-	this.guardarropa = guardarropa;
-}*/
+	
 	//METODOS------------------------------------------------------------------
 	
 	@Override
@@ -89,17 +75,17 @@ public class Atuendo {
 		this.prendas.addAll(prendas);
 	}
 	
-	public boolean compararAtuendo(Atuendo atuendo) {
-		
-		for (int i = 0; i< atuendo.getPrendas().size();i++) {
-			if (this.prendas.contains(atuendo.getPrendas().get(i))) {
-				
-			}else {
-				return false;
-			}	
-		}
-		return true;
-	}
+//	public boolean compararAtuendo(Atuendo atuendo) {
+//		
+//		for (int i = 0; i< atuendo.getPrendas().size();i++) {
+//			if (this.prendas.contains(atuendo.getPrendas().get(i))) {
+//				
+//			}else {
+//				return false;
+//			}	
+//		}
+//		return true;
+//	}
 	
 	public int cantidadDePrendas() {
 		int cantidad= 0;
@@ -128,7 +114,7 @@ public class Atuendo {
 		    System.out.println(nombreDePrenda);
 		    
 		}
-		return "Atuendo [" + prendas+ "]";
+		return  "Este es su Atuendo";
 	}
 	
 	}//FIN ATUENDOS
