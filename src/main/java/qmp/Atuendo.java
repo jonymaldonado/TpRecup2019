@@ -26,7 +26,7 @@ public class Atuendo {
 	
 	@ManyToOne(cascade =CascadeType.ALL)
 	@JoinColumn(name = "guardarropaCorrespondiente")
-	private Guardarropa guardarropaCorrespondiente;
+	private Guardarropa guardarropaCorrespondiente;//esto fue modificado
 	
 	//@ManyToMany(mappedBy = "atuendos", fetch = FetchType.LAZY)
 	//private List<Usuario> usuarios = new ArrayList<Usuario>();

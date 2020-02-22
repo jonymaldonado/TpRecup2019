@@ -15,7 +15,7 @@ public class Guardarropa{
 	private int idGuardarropa;
 	
 	@Column(name="nombreGuardarropa")
-	public String nombreGuardarropa;	 
+	public String nombreGuardarropa;//modificado	 
 	@OneToMany (cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinTable(
 		       name = "Guardarropa_Prenda", 
@@ -45,12 +45,14 @@ public class Guardarropa{
 		 this.usuarioPerteneciente=null;
 		 this.setNombre(nombre);
 		 }
-//metodos getters y setters--------------------------------------------------
 	
-
 	public Guardarropa() {
 		// TODO Apéndice de constructor generado automáticamente
 	}
+	
+//metodos getters y setters--------------------------------------------------
+	
+
 
 
 	public String getNombre() {
@@ -94,7 +96,7 @@ public class Guardarropa{
 	
 	public void agregarPrenda(Prenda unaPrenda) {
 		this.prendas.add(unaPrenda);
-		unaPrenda.setGuardarropaPerteneciente(this);
+		unaPrenda.setGuardarropaPerteneciente(this);//modificado
 	}
 
 
@@ -106,7 +108,7 @@ public class Guardarropa{
 	
 	public void asignarUsuario(Usuario usuario) {
 		this.setUsuarioPerteneciente(usuario);
-	}
+	}//agregado
 	
 	
 	

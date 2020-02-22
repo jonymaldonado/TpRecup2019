@@ -15,16 +15,16 @@ public class Prenda {
 	private int idPrenda;
 	
 	@Column(name = "nombrePrenda")
-	private String nombrePrenda;
+	private String nombrePrenda;//modificado
 	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinColumn(name="idCategoria")
 	private Categoria categoriaPrenda;
 	@Column(name = "colorPrenda")
-	private String colorPrenda;
+	private String colorPrenda;//modificado
 	
 	@ManyToOne(fetch = FetchType.LAZY )
 	@JoinColumn(name ="guardarropaPerteneciente")
-	private Guardarropa guardarropaPerteneciente;
+	private Guardarropa guardarropaPerteneciente;//agregado
 	//@ManyToMany(mappedBy = "prendas", fetch = FetchType.LAZY)
 	//private List<Atuendo> atuendos = new ArrayList<Atuendo>();
 	
@@ -33,7 +33,6 @@ public class Prenda {
 		this.setNombre(nombre);
 		this.setCategoriaPrenda(categoria);
 		this.setColor(color);
-		this.setCategoriaPrenda(null);
 		this.setGuardarropaPerteneciente(null);
 	}
 	
