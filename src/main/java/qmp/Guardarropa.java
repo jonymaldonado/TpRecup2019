@@ -23,9 +23,9 @@ public class Guardarropa{
 	 @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	 @JoinColumn(name = "atuendosGuardarropas")
 	private List<Atuendo> atuendos = new ArrayList<Atuendo>();
-	@Transient
-	@OneToOne(mappedBy="guardarropa", fetch = FetchType.LAZY)
-	@JoinColumn(name="usuarioPerteneciente")
+//	@Transient
+//	@OneToOne(mappedBy="guardarropa", fetch = FetchType.LAZY)
+//	@JoinColumn(name="usuarioPerteneciente")
 	
 	 private Usuario usuarioPerteneciente;
 
@@ -87,7 +87,7 @@ public class Guardarropa{
 	
 	public void agregarPrenda(Prenda unaPrenda) {
 		this.prendas.add(unaPrenda);
-		unaPrenda.setGuardarropaPerteneciente(this);//modificado
+		//unaPrenda.setGuardarropaPerteneciente(this);//modificado
 	}
 
 

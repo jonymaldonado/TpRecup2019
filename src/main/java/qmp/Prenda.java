@@ -22,18 +22,14 @@ public class Prenda {
 	@Column(name = "colorPrenda")
 	private String colorPrenda;//modificado
 	
-	@ManyToOne(fetch = FetchType.LAZY )
-	@JoinColumn(name ="guardarropaPerteneciente")
-	private Guardarropa guardarropaPerteneciente;//agregado
-	//@ManyToMany(mappedBy = "prendas", fetch = FetchType.LAZY)
-	//private List<Atuendo> atuendos = new ArrayList<Atuendo>();
+
 	
 //constructor-----------------------------------------------------------------------
 	public Prenda(String nombre, Categoria categoria, String color) {
 		this.setNombre(nombre);
 		this.setCategoriaPrenda(categoria);
 		this.setColor(color);
-		this.setGuardarropaPerteneciente(null);
+		
 	}
 	
 	
@@ -70,13 +66,7 @@ public Prenda() {
 		return idPrenda;
 	}
 	
-	public Guardarropa getGuardarropaPerteneciente() {
-		return guardarropaPerteneciente;
-	}
-	
-	public void setGuardarropaPerteneciente(Guardarropa guardarropaPerteneciente) {
-		this.guardarropaPerteneciente = guardarropaPerteneciente;
-	}
+
 	/*public List<Atuendo> getAtuendos() {
 		return atuendos;
 	}

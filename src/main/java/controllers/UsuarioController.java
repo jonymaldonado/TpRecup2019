@@ -136,8 +136,8 @@ public ModelAndView mostrar(Request request,Response response) {
 			
 
 		try {
-            if(req.session().attribute("usuario") != null){
-                Usuario usuarioSession = req.session().attribute("usuario");
+           // if(req.session().attribute("usuario") != null){
+           //     Usuario usuarioSession = req.session().attribute("usuario");
                 int idUser=usuarioSession.getIdUsuario();
                 res.redirect("/inicio");
 //                return  res;
@@ -149,9 +149,9 @@ public ModelAndView mostrar(Request request,Response response) {
                 Usuario usuariobase = repo.consultarYBuscar(nombreDeUsuario, password);
 
 
-                Session session = req.session(true);
-                session.attribute("usuario", usuariobase);
-                session.maxInactiveInterval(1800);//30 Min en Segundos
+           //     Session session = req.session(true);
+           //     session.attribute("usuario", usuariobase);
+           //     session.maxInactiveInterval(1800);//30 Min en Segundos
 
                 model.clear();
                 model.put("usuario", usuariobase);

@@ -3,6 +3,7 @@ package qmp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -29,11 +30,8 @@ public class Usuario {
 	private String password;
 	@Column(name="edadUsuario")
 	private int edadUsuario;
-	@OneToOne(cascade = { CascadeType.ALL })
-	@JoinTable(name = "Usuario_Guardarropa" ,
-		        joinColumns = { @JoinColumn(name = "idUsuario") },
-		        inverseJoinColumns = { @JoinColumn(name = "idGuardarropa")}
-    )
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idGuardarropa")
 	private Guardarropa guardarropa;
 	@Column(name="correoUsuario")
 	private String correoUsuario;
