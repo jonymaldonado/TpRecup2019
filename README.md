@@ -1,6 +1,8 @@
 # TP_RECUP_2019
 
 *Diagrama de Secuencia que comunica como se crea un atuendo*: http://bit.ly/DiagDeSecuencia-CrearAtuendo
+*Diagrama de entidad-relación*: http://bit.ly/DER-Recup
+*Diagrama de Clases*: http://bit.ly/DiagranaDeClases-QMP
 
 # Dominio del TP
 
